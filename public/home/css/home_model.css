@@ -1,6 +1,6 @@
 *{ margin:0; padding:0; }
 
-body{padding-top:100px;margin-left:150px;background-color: #E9EDF0;box-shadow: -5px -5px 3px 1px #ccc; }
+body{padding-top:100px;background-color: #E9EDF0;box-shadow: -5px -5px 3px 1px #ccc; }
 ul{text-decoration: none;list-style: none}
 #model_left{ background-color:#E6EAEE; position:fixed; top:50px; left:0; height:100%; width:150px;overflow: hidden;}
 #model_left{outline:1px solid #ccc}
@@ -11,7 +11,8 @@ ul{text-decoration: none;list-style: none}
 #model_left li:hover{ background-color:#BCBCBC;}
 a:hover{  text-decoration:none;}
 a:focus{ text-decoration:none;}
-
+#model_left::before,#model_left::after{content:'';display:table;}
+#model_left::after{clear:both}
 /************ 第二行 ****************/
 
 #change_infof{ position:fixed;  width:100%; height:50px; top:50px;left:150px; background-color:#F3F6F8;box-shadow: 0 2px 3px 0 #ccc;}
@@ -23,15 +24,17 @@ a:focus{ text-decoration:none;}
 
 /************ 主内容 *************/
 /************  写日志传照片  *************/
-
+/*.model_main{width:100%;height:100%;padding-left:150px;}*/
 #model_main{width:760px;margin:0 auto;margin-top:20px;height:100%}
 #model_main_left{width:500px;float:left;margin-right:20px;}
+/*#model_main_right{width:240px;float: left}*/
 #indexlog_div{height: 124px;width:500px;box-shadow: 2px 2px 2px 0.5px #ccc;margin-bottom: 20px;background-color: #F8F8F8;}
 #indexlog_textarea{resize: none;border:none;width: 500px;padding:5px;height:80px;background-color: #FFFFFF;}
 #indexlog_img{width:250px;float: left;}
 #indexlog_imgi{width: 100px;margin:0 auto;}
 #indexlog_sub{float: right;width: 250px;text-align: center}
-
+#model_main::before,#model_main::after{content: '';display: table}
+#model_main::after{clear:both}
 /****************  找同学  **********************/
 #indexfind{width:500px;height:310px;box-shadow: 2px 2px 2px 0.5px #ccc;}
 #indexfind_rel{width: 150px;float:left;height:310px;background-color:#52B3FF;}
@@ -66,6 +69,9 @@ a:focus{ text-decoration:none;}
 .index_friendshint{padding-left:15px;display: none;}
 /*** 按钮 ***/
 .index_friendssureinfo{float: right;margin-right:15px;margin-top:-5px;display:none;}
+
+body::before,body::after{content: '';display: table;}
+body::after{clear: both}
 
 
 

@@ -1,5 +1,6 @@
 //点击搜索框触发背景色
 $(function(){
+
     $('#change_info li:first').css({
         'border-bottom':'3px solid blue'
     });
@@ -74,8 +75,31 @@ $(function(){
         }
         $('#change_infof').css({
             'width':$(window).width()-150+'px'
-        })
+        });
+        // $(body).css({
+        //     'margin-left':'150px'
+        // });
+        // $('.model_main').css({
+        //     'margin-left':'150px',
+        // })
+        if($('body').css('margin-left') != 150 ){
+            $('.model_main').css({
+                'margin-left':'150px',
+            });
+            $('body').css({
+                'margin-left':'0',
+            });
+        }
+        if($('body').css('margin-left') == 150 ){
+            $('.model_main').css({
+                'padding-left':'0',
+            });
+            $('body').css({
+                'margin-left':'150px',
+            });
+        }
     });
+
     //刷新页面并且浏览器宽小于800时触发
     if($(window).width()<800){
         $('#change_infof').css({
@@ -140,9 +164,29 @@ $(function(){
     $('#change_infof').css({
         'width':$(window).width()-150+'px'
     });
+
+
     $('.index_friendssureinfo').click(function(){
         alert(1);
     })
+
+    if($('body').css('margin-left') != 150 ){
+        $('.model_main').css({
+            'margin-left':'150px',
+        });
+        $('body').css({
+            'margin-left':'0',
+        });
+    }
+    if($('body').css('margin-left') == 150 ){
+        $('.model_main').css({
+            'padding-left':'0',
+        });
+        $('body').css({
+            'margin-left':'150px',
+        });
+    }
+
 });
 var its=document.getElementsByClassName('index_friendstextarea');
 var ics=document.getElementsByClassName('index_changenum');
