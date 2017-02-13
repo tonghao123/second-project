@@ -79,11 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-<<<<<<< HEAD
                     RenRen
-=======
-                    Laravel
->>>>>>> shen
                 </div>
 
                 <div class="links">

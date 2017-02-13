@@ -6,17 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{asset('public/css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('home/css/home_model.css')}}" rel="stylesheet">
-<<<<<<< HEAD
-    <title>@yield('title','首页')</title>
-</head>
-<body >
-=======
      <link href="{{asset('home/css/footer.css')}}" rel="stylesheet">
     @yield('mycss')
     <title>@yield('title','首页')</title>
 </head>
 <body>
->>>>>>> shen
 <!--  **************************** 第一行nav ********************************** -->
 <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #227DC5;">
     <div class="container-fluid">
@@ -31,12 +25,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse in" aria-expanded="true">
             <ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD
-                <li><a href="#" style="padding:10px;"><img src="{{asset('home/img/default_icon.png')}}" height="30" style=""></a></li>
-                <li><a href="#">龙家大少</a></li>
-                <li><a href="#">退出</a></li>
-                <li style="cursor:default"><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;</a></li>
-=======
+
                 @if(Auth::check())
                 <li><a href="#" style="padding:10px;"><img src="{{asset('home/img/default_icon.png')}}" height="30" style=""></a></li>
                 <li><a href="/login">{{Auth::user()->name}}</a></li>
@@ -48,7 +37,6 @@
                     <li><a href="/logout">退出</a></li>
                     <li style="cursor:default"><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;</a></li>
                 @endif
->>>>>>> shen
             </ul>
             <form class="navbar-form navbar-right">
                 <input type="text" class="form-control" placeholder="搜索的内容">
@@ -77,28 +65,21 @@
 <div id="change_infof">
     <div id="change_info">
         <ul>
-<<<<<<< HEAD
-        <a href=""><li>新鲜事</li></a>
-        <a href=""><li>原创内容</li></a>
-        <a href=""><li>关注内容</li></a>
-=======
         @section('second')
         <a href=""><li>新鲜事</li></a>
         <a href=""><li>原创内容</li></a>
         <a href=""><li>关注内容</li></a>
             @show()
->>>>>>> shen
+
         </ul>
     </div>
 </div>
 <!-- ***************************** 搜索框下的一行结束 ********************************** -->
 @section('main')
 <!-- ***************************** 主内容开始 ********************************** -->
-<<<<<<< HEAD
-<div style="height:2000px;width:760px;" id="model_main">
-=======
+
 <div style="width:760px;" id="model_main">
->>>>>>> shen
+
     <div id="model_main_left">
         <div id="indexlog_div">
             <form>
@@ -161,16 +142,13 @@
             <div class="index_friendscomment">
                 <img src="{{asset('home/img/default_icon.png')}}" height="30" style="float: left;margin-bottom:10px;"><span style="line-height:30px;"> &nbsp;</span>
                 <textarea class="index_friendstextarea  form-control" type="text"  data-var="@heading-color" placeholder="评论..." style="height:30px;"></textarea>
-<<<<<<< HEAD
-                <span class="index_friendshint">0/150字</span>
-=======
+
                 <span class="index_friendshint"><span class="index_changenum">0</span>/150字</span>
->>>>>>> shen
                 <button class="index_friendssureinfo btn btn-success btn-sm" >评论</button>
             </div>
         </div>
 
-<<<<<<< HEAD
+
         <div class="index_friends">
             <div class="index_onefriend">
                 <!-- 头像 -->
@@ -246,155 +224,12 @@
     </div>{{--左边的--}}
     <div id="model_main_right" style="width:240px;float: left">
         @include('/home/Intergral/index')
-=======
 
 
-    </div>{{--左边的--}}
-    <div id="model_main_right" style="width:240px;float: left">
-        超帅的
->>>>>>> shen
     </div>
 </div>
 <!-- ***************************** 主内容结束 ********************************** -->
 @show()
-<<<<<<< HEAD
-<!-- **************************** jquery开始到最后 ********************************* -->
-<script src="{{asset('public/js/jquery-1.8.3.min.js')}}"></script>
-<script src="{{asset('public/js/bootstrap.min.js')}}"></script>
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script>
-        //点击搜索框触发背景色
-        $(function(){
-            $('#change_info li:first').css({
-                'border-bottom':'3px solid blue'
-            });
-            $('#homeindex_search').click(function(){
-                $('#homeindex_search').css({
-                    'border':'2px solid #ace',
-                    'outline':'none'
-                });
-                $('#search_info').css({
-                    'display':'block',
-                    'box-shadow':'0 2px 3px 0 #ccc',
-                })
-            });
-            //失去失去搜索框焦点时失去边框色
-            $('#homeindex_search').blur(function(){
-                $('#homeindex_search').css({'border-color':'#1C68A4'});
-                $('#search_info').css({
-                    'display':'none'
-                })
-            });
-            //移入搜索框下面的字显示背景色
-            $('#search_info li').mousemove(function(){
-                $(this).css({'background-color':'#ccc'});
-            });
-            //移出搜索框下面的字移除背景色
-            $('#search_info li').mouseout(function(){
-                $(this).css({'background-color':''});
-            });
-
-            //滚动条大于180时隐形
-            if(document.body.scrollTop>180){
-                $('#change_infof').css({
-                    'display':'none'
-                });
-            }
-            //浏览器宽小于800自动隐藏
-            //浏览器小于800 左边的变成小的图标,大于800自动变成长宽度的
-            $(window).resize(function(){
-                if($(window).width()<800){
-                    $('#change_infof').css({
-                        'display':'none',
-                    });
-                    $('#model_left').css({
-                        'width':'55px',
-                        'overflow':'hidden',
-                    });
-                    $('body').css({
-                        'margin-left':'55px'
-                    });
-                }
-                if($(window).width()>800){
-                    $('#model_left').css({
-                        'width':'150px',
-                    });
-                    $('body').css({
-                        'margin-left':'150px'
-                    });
-                    if($(window).width()>800){
-                        $('#change_infof').slideDown();
-                    }
-                    $('#change_infof').css({
-                        'width':$(window).width()-150+'px'
-                    })
-                }
-            });
-            //在滚动条大于180高度是上升
-            $(window).scroll(function(){
-                if(document.body.scrollTop>180){
-                    $('#change_infof').slideUp();
-                }
-            });
-            //在滚动条一定距离和浏览器的宽大于800时候下降
-            $(window).scroll(function(){
-                if(document.body.scrollTop<180 && $(window).width()>800){
-                    $('#change_infof').slideDown();
-                }
-            });
-            //刷新页面并且浏览器宽小于800时触发
-            if($(window).width()< 800){
-                $('#change_infof').css({
-                    'display':'none'
-                });
-                $('body').css({
-                    'margin-left':'55px',
-                });
-                $('#model_left').css({
-                    'width':'55px'
-                })
-            }
-            //点击评论的时候框变大,确认按钮出现
-            $('.index_friendstextarea').click(function(){
-                $(this).css({
-                    'height':'130px'
-                });
-                $(this).siblings('span').css({
-                    'display':'inline-block'
-                });
-                $(this).siblings('button').css({
-                    'display':'inline-block'
-                })
-            });
-            $('.index_friendstextarea').focus(function(){
-                $(this).css({
-                    'height':'130px'
-                });
-                $(this).siblings('span').css({
-                    'display':'inline-block'
-                });
-                $(this).siblings('button').css({
-                    'display':'inline-block'
-                })
-            });
-            $('.index_friendstextarea').blur(function(){
-                $('.index_friendstextarea').css({
-                    'height':'30px'
-                });
-                $('.index_friendshint').css({
-                    'display':'none'
-                });
-                $('.index_friendssureinfo').css({
-                    'display':'none'
-                })
-            })
-            $('#change_infof').css({
-                'width':$(window).width()-150+'px'
-            })
-        })
-</script>
-=======
 
 @section('foot')
     <div id="footer" style="width: 1349px;margin: 0 auto">
@@ -461,6 +296,6 @@
 @section('my_js')
     @show()
 
->>>>>>> shen
+
 </body>
 </html>
