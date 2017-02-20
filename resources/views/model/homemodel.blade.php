@@ -80,6 +80,7 @@
 <div class="model_main">
 <div style="width:760px;" id="model_main">
     {{--左边的--}}
+    @section('model_main_left')
     <div id="model_main_left">
         <div id="indexlog_div">
             <form>
@@ -132,7 +133,7 @@
             </div>
             {{-- 判断图片大小 大于500或者高于多少应该就定死  小于就可以 --}}
             <div>
-                <img src="">
+                <img src="{{asset('home/img/default_icon.png')}}" width="500">
             </div>
             {{-- 点赞分享 --}}
             <div class="index_friendssure">
@@ -143,7 +144,7 @@
             <div class="index_friendscomment">
                 <img src="{{asset('home/img/default_icon.png')}}" height="30" style="float: left;margin-bottom:10px;"><span style="line-height:30px;"> &nbsp;</span>
                 <textarea class="index_friendstextarea  form-control" type="text"  data-var="@heading-color" placeholder="评论..." style="width: 415px;height:30px;"></textarea>
-                <span class="index_friendshint">0/150字</span>
+                <span class="index_friendshint"><span class="index_changenum">0</span>/150字</span>
                 <button class="index_friendssureinfo btn btn-success btn-sm" style="display: none;">评论</button>
             </div>
         </div>
@@ -167,7 +168,7 @@
             </div>
             {{-- 判断图片大小 大于500或者高于多少应该就定死  小于就可以 --}}
             <div>
-                <img src="">
+                <img src="{{asset('home/img/default_icon.png')}}" width="500">
             </div>
             {{-- 点赞分享 --}}
             <div class="index_friendssure">
@@ -178,7 +179,7 @@
             <div class="index_friendscomment">
                 <img src="{{asset('home/img/default_icon.png')}}" height="30" style="float: left;margin-bottom:10px;"><span style="line-height:30px;"> &nbsp;</span>
                 <textarea class="index_friendstextarea  form-control" type="text"  data-var="@heading-color" placeholder="评论..." style="width: 415px;height:30px;"></textarea>
-                <span class="index_friendshint">0/150字</span>
+                <span class="index_friendshint"><span class="index_changenum">0</span>/150字</span>
                 <button class="index_friendssureinfo btn btn-success btn-sm" style="display: none;">评论</button>
             </div>
         </div>
@@ -202,7 +203,7 @@
             </div>
             {{-- 判断图片大小 大于500或者高于多少应该就定死  小于就可以 --}}
             <div>
-                <img src="">
+                <img src="{{asset('home/img/default_icon.png')}}" width="500">
             </div>
             {{-- 点赞分享 --}}
             <div class="index_friendssure">
@@ -213,12 +214,13 @@
             <div class="index_friendscomment">
                 <img src="{{asset('home/img/default_icon.png')}}" height="30" style="float: left;margin-bottom:10px;"><span style="line-height:30px;"> &nbsp;</span>
                 <textarea class="index_friendstextarea  form-control" type="text"  data-var="@heading-color" placeholder="评论..." style="width: 415px;height:30px;"></textarea>
-                <span class="index_friendshint">0/150字</span>
+                <span class="index_friendshint"><span class="index_changenum">0</span>/150字</span>
                 <button class="index_friendssureinfo btn btn-success btn-sm" style="display: none;">评论</button>
             </div>
         </div>
 
     </div>
+    @show()
     {{-- 右边的 --}}
     <div id="model_main_right" style="width:240px;float: left">
         @include('/home/Intergral/index')

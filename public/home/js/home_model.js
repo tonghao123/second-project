@@ -32,13 +32,13 @@ $(function(){
     //在滚动条大于180高度是上升
     $(window).scroll(function(){
         if(document.body.scrollTop>180){
-            $('#change_infof').slideUp();
+            $('#change_infof').slideUp('fast');
         }
     });
     //在滚动条一定距离和浏览器的宽大于800时候下降
     $(window).scroll(function(){
         if(document.body.scrollTop<180 && $(window).width()>800){
-            $('#change_infof').slideDown();
+            $('#change_infof').slideDown('fast');
         }
     });
     //滚动条大于180时隐形
@@ -71,7 +71,7 @@ $(function(){
             });
         }
         if(document.body.scrollTop<180 && $(window).width()>800){
-            $('#change_infof').slideDown();
+            $('#change_infof').slideDown('fast');
         }
         $('#change_infof').css({
             'width':$(window).width()-150+'px'
@@ -166,9 +166,9 @@ $(function(){
     });
 
 
-    $('.index_friendssureinfo').click(function(){
-        alert(1);
-    })
+    // $('.index_friendssureinfo').click(function(){
+    //     alert(1);
+    // })
 
     if($('body').css('margin-left') != 150 ){
         $('.model_main').css({

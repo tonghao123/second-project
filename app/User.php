@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','avatar','confirmed_code'
+        'name', 'email', 'password','avatar','confirmed_code','sex','birthday','home','id','username','prov','city','area','street'
     ];
 
     /**
@@ -32,4 +32,8 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($value);
     }
+
+    public $timestamps = false;
+
+
 }

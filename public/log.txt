@@ -1,0 +1,337 @@
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1234</data><data>5</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=41A6338294F280ECD16AC61FE499A896
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1234</data><data>5</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=5AD0B3F89A950CD25947E8F383F6C0DF
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1234</data><data>6</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=C511F67440C89B0C0332103FDB9F4BD8
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1234</data><data>6</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=F633A79D9C7CB9465372859731ABD15D
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1234</data><data>6</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=19821D1641F973935F632B90EDEA357E
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F34</data><data>6</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=B8BC07F5E7A8B7FCC797A10C64657D94
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F34</data><data>6</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=0EEFC7B9A3EF2A1B8EF95CB8C445A846
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F34</data><data>6</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=AC237DE749AEDEAD6EDBCEC25FB57C17
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F34</data><data>6</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=06185EF54E262D3BF793A682BD50DB4D
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>13157378628</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F34</data><data>6</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=C7B03D34F92F5C627809B65921EA1C6F
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>13157378628</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>2</templateId>
+                    <datas><data>1F34</data><data>6</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=CFE66FFC7487AD6FF6822EA21FA244DD
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>13157378628</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>2</templateId>
+                    <datas><data>1F34</data><data>6</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=341571F9E889F734C63E467D9C3BA238
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>2</templateId>
+                    <datas><data>1F34</data><data>6</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=50C3BA4E403472C448E08861B65227C3
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>2</templateId>
+                    <datas><data>1F34</data><data>6</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=6EB793655FF297B1072B858F8FE43B77
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>2</templateId>
+                    <datas><data>1F34</data><data>6</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=F6989359F56B5BEBBD85E20CDF58137A
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F38644</data><data>60</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=F834A8A425598764E77EE56B5D6F5B86
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F38644</data><data>60</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=45308278BE656AD25836CF2BB948738D
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F38644</data><data>60</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=8FD8C43758EE90156F7A986D78D4A4C3
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F38644</data><data>1</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=7507119523416ADD72E1E54EFFEA5F3D
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F38644</data><data>1</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=D5EDD04EF6B37601FF9B68A550AF53EE
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F38644</data><data>1</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=49CDC73F7BDCF778D2FC67303B0CE300
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>000000</statusCode>
+    <TemplateSMS>
+        <smsMessageSid>4d3760a8c4d74f09b420a8896f0f1ece</smsMessageSid>
+        <dateCreated>20170419202910</dateCreated>
+    </TemplateSMS>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F38644</data><data>1</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=32A88FBA3C282D427F4BB0AE1685375E
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>111106</statusCode>
+    <statusMsg>【账号】请求包头Authorization参数解码后时间戳过期</statusMsg>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F38644</data><data>1</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=A915225A47E499790A5950546D0ACDF4
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>000000</statusCode>
+    <TemplateSMS>
+        <smsMessageSid>16fc13fd838c4ea880b6f9ac1beeb91b</smsMessageSid>
+        <dateCreated>20170419222157</dateCreated>
+    </TemplateSMS>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F38644</data><data>1</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=53ABED5A36953562D61FBA108341A35A
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>000000</statusCode>
+    <TemplateSMS>
+        <smsMessageSid>dbcef22b931844ccbe18a9a345619bfb</smsMessageSid>
+        <dateCreated>20170419222930</dateCreated>
+    </TemplateSMS>
+</Response>
+
+request body = <TemplateSMS>
+                    <to>15167667747</to> 
+                    <appId>8a216da85b602cda015b85dc6103106f</appId>
+                    <templateId>1</templateId>
+                    <datas><data>1F38644</data><data>1</data></datas>
+                  </TemplateSMS>
+request url = https://app.cloopen.com:8883/2013-12-26/Accounts/8a216da85b602cda015b85dc5f8f1069/SMS/TemplateSMS?sig=6EF96F87B5D85866175F09EBAC36EDF7
+response body = <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Response>
+    <statusCode>000000</statusCode>
+    <TemplateSMS>
+        <smsMessageSid>e337fa6a5b9e48019a5346703f2ab8f1</smsMessageSid>
+        <dateCreated>20170419233024</dateCreated>
+    </TemplateSMS>
+</Response>
+

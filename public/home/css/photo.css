@@ -1,3 +1,4 @@
+body{ padding-left:150px;}
 #change_infof ul{width:860px;}
 #change_info{width:860px;}
 /*****************************  我的相册 和 最近图片  *************************************/
@@ -23,7 +24,37 @@
 .photo_second::before,.photo_second::after{content:'';display:table;}
 .photo_second::after{clear:both}
 
+/*fixed*/
+.mybody{position: fixed;width:100%;height:100%;background-color:#ccc;z-index:1200;top:0;left:0;opacity: 0.5;display: none;}
+.diary_brow{opacity:10;position:fixed; width:410px;height:260px;background-color:#F8F8F8; top:35%;left:35%;z-index: 1300;padding:10px 0;box-shadow:0 0 25px -3px #0f0f0f;display:none}
+.diary_brow1{width:100%;height:35px;padding-left:10px;padding-top:5px;}
+.diary_brow1span{height:100%;border-bottom:3px solid blue;padding:5px 0;}
+.diary_brow2{width:100%;height:190px;background-color:#fff;margin-top:10px;padding:0 10px;padding-left:20px;paddint-top:50px;}
+.diary_brow2 input{margin:20px 0;}
+.diary_brow2 a{padding-top:3px;padding-bottom:3px;margin-top:20px;}
+#docuo:hover{cursor:pointer;}
 
+.file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 1px solid #99D3F5;
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+    vertical-align: middle;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
 
 
 

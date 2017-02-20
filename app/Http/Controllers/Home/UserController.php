@@ -1,15 +1,17 @@
 <?php
-
 namespace App\Http\Controllers\Home;
 
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRegisterRequest;
+use App\Tool\Result;
+use App\Tool\SMS\SendTemplateSMS;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+
 
 class UserController extends Controller
 {
@@ -22,7 +24,7 @@ class UserController extends Controller
     //保存用户信息
     public function store(UserRegisterRequest $request)
     {
-//        dd($request->all());
+//        dd(str_random(10));
         $confirmed_code = str_random(10);
         $data = [
             'avatar'=>'Home/img/default.jpg',
@@ -49,9 +51,9 @@ class UserController extends Controller
         $user = User::where('confirmed_code', $code)->first();
         //dd($user);
         if (is_null($user)) {
-            return redirect('/');
+            return redirect('/home/reg');
         }
-        $user->confirmed_code = str_random(10);
+        $user->confirmed_code = str_random(11);
         $user->is_confirmed = 1;
         $user->save();
         return redirect('home/login');
@@ -85,5 +87,16 @@ class UserController extends Controller
         return redirect('home/login');
     }
 
+    public function sendSMS()
+    {
+        $sms=new SendTemplateSMS();
+        $result=$sms->sendSMS('15167667747',array('1F38644','1'),1);
+        dd($result);
+//        $result=new Result();
+//        $result->status=0;
+//        $result->message='短信验证成功';
+//        return $result->toJosn();
+//        return 'ss';
+    }
 
 }

@@ -63,7 +63,7 @@
 
                          <span class="getpassword" id="getpassword"><a href="">忘记密码？</a></span>
                       </div>
-                         <input type="button" onclick="window.location='http://laravel-s60.dev/home/reg'"  class="btn btn-success" id="reg" value="注册" >
+                     <a href="{{asset('home/reg')}}"  class="btn btn-success" id="reg" style="line-height:33px;">注册</a>
                          <input type="submit" class="btn btn-primary"  id="btn" value="登录" >
                  </ul>
              </form>

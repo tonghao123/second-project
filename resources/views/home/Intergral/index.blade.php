@@ -25,122 +25,6 @@
 </head>
 {{--使用js实现选项卡的切换--}}
 <body>
-<script>
-    $(function(){
-//        图标
-        $('.zan img').mouseover(function(){
-            $('.zanTop').css('display','block');
-        }).mouseout(function(){
-            $('.zanTop').css('display','none');
-        })
-        $('.zanTop').mouseover(function(){
-            $(this).css('display','block');
-        })
-//切换
-        $('#visit').mouseover(function(){
-            $('.visitCut').css('display','block');
-        }).mouseout(function(){
-            $('.visitCut').css('display','none');
-        })
-//叉叉
-        $('#listFriend img').mouseover(function(){
-            $('#listFriend a').css('display','block');
-        }).mouseout(function(){
-            $('#listFriend a').css('display','none');
-        })
-        $('#listFriend a').mouseover(function(){
-            $(this).css('display','block');
-        })
-//最近来访
-        $('.visitIcon').hover(function(){
-            $('#visit_01_Up').css('display','block');
-        },function(){
-            $('#visit_01_Up').css('display','none');
-        })
-        $('.visitCut .left').hover(function(){
-            $('#visit_left_Up').css('display','block');
-        },function(){
-            $('#visit_left_Up').css('display','none');
-        })
-        $('.visitCut .right').hover(function(){
-            $('#visit_right_Up').css('display','block');
-        },function(){
-            $('#visit_right_Up').css('display','none');
-        })
-        $('.visitMore').hover(function(){
-            $('#visit_more_Up').css('display','block');
-        },function(){
-            $('#visit_more_Up').css('display','none');
-        })
-//        生日
-        $('.birthMore').hover(function(){
-            $('#birth_more_Up').css('display','block');
-        },function(){
-            $('#birth_more_Up').css('display','none');
-        })
-//        推荐
-        $('#refereeTop .more').hover(function(){
-            $('#referee_Up').css('display','block');
-        },function(){
-            $('#referee_Up').css('display','none');
-        })
-        $('#refereeTop .change').hover(function(){
-            $('#referee_more_Up').css('display','block');
-        },function(){
-            $('#referee_more_Up').css('display','none');
-        })
-
-        $('#listFriend .jian').hover(function(){
-            $('#friend_jian_Up').css('display','block');
-        },function(){
-            $('#friend_jian_Up').css('display','none');
-        })
-        $('#listFriend .jia').hover(function(){
-            $('#friend_jia_Up').css('display','block');
-        },function(){
-            $('#friend_jia_Up').css('display','none');
-        })
-
-    })
-</script>
-{{--实现弹框--}}
-<script>
-     $(function(){
-//         $('.rp_01 .zanTop').hover(function(){
-//             $('.rp_01').find('#rp_01_Up').animate({opacity:'show',top:'0'},'slow');
-//         },function(){
-//             $('.rp_01').find('#rp_01_Up').animate({opacity:'hide',top:'20'},'fast');
-//         })
-         $('.rp_01 .zanTop').hover(function(){
-             $('#rp_01_Up').css('display','block');
-        },function(){
-            $('#rp_01_Up').css('display','none');
-        })
-//      引入项目时设置top
-         $('.rp_02').hover(function(){
-             $('#rp_02_Up').css('display','block');
-         },function(){
-             $('#rp_02_Up').css('display','none');
-         })
-//         设置更多
-         $('.rp_03').hover(function(){
-             $('#rp_03_Up').css('display','block');
-             $('#rp_032_Up').css('display','block');
-         },function(){
-             $('#rp_03_Up').css('display','none');
-             $('#rp_032_Up').css('display','none');
-         })
-//         刷新获得
-         $('#help .icon').hover(function(){
-             $('#rp_Help_Up').css('display','block');
-         },function(){
-             $('#rp_Help_Up').css('display','none');
-         })
-//         帮助
-
-     });
-</script>
-
 <div id='lifes'>
     <ul id='optiond'>
         <li class='active'>攒人品</li>
@@ -153,67 +37,14 @@
             {{--js计时3600秒切换还原图片zan01/zan--}}
             <a><div class="rp_01"><span class="zan"><img src="{{asset('home/img/zan01.png')}}"></span><div class="zanTop"></div><div id="rp_01_Up">点击即可随机获取人品值</div></div></a>
             {{--统计总rp 今日rp--}}
-            <a><div class="rp_02"><p id="pp">总RP值：<span>{{0}}</span></p><p id="pp">今日RP值：<span>{{0}}</span></p><div id="rp_02_Up">点击查看更多</div></div></a>
+            <a href="{{url('/home/character')}}"><div class="rp_02"><p id="pp">总RP值：<span>{{0}}</span></p><p id="pp">今日RP值：<span>{{0}}</span></p><div id="rp_02_Up">点击查看更多</div></div></a>
             {{--刷新的rp,rp值不能超过2位数--}}
             <a><div class="rp_03"><p>刷新已得</p><span>{{0}}</span>RP
                     <div id="rp_032_Up">立即刷新页面即可获得1点RP</div>
                     <div id="rp_03_Up">每半小时刷新页面可获得1点RP，距离下<br>次还有<span id="box"></span>。</div>
                 </div>
             </a>
-            <script>
-                //    倒计时30分
-                (function() {
-                    var box = document.getElementById('box');
-                    var rp03=document.getElementById('rp_03_Up');
-                    var m = 30;
-                    var s = 0;
-                    var timeDate;
-                    timeDate = setInterval(function () {
-                        if (s == 0) {
-                            m -= 1;
-                            if (m >= 0) {
-                                s = 59;
-                            } else {
-                                s = 0;
-                            }
-                        }
-                        if (m <= 0) {
-                            m = 0;
-                        }
-                        if (s < 0) {
-                            clearInterval(timeDate);
-                            rp03.style.display='none';
-                            rp03.setAttribute('id','rp_032_Up');
-                            return;
-                        }
-                        if(s < 10){
-                            if(m < 10){
-                                box.innerHTML ='0'+m + '分0' + s + '秒';
-                                s--;
-                            }else{
-                                box.innerHTML = m + '分0' + s + '秒';
-                                s--;
-                            }
-                        }else{
-                            if(m <10){
-                                box.innerHTML ='0'+m + '分' + s + '秒';
-                                s--;
-                            }else{
-                                box.innerHTML = m + '分' + s + '秒';
-                                s--;
-                            }
-                        }
-                    },1000)
-                })()
-//                把时间存在在数据库，每次刷新取得数据库的值并判断值m,s 都为零rp+1
-//                切换图片
-                 $(function(){
-                     $('.zanTop').click(function(){
-                             $('.zan img').attr('src','{{asset("home/img/zan.png")}}');
-                             $('#rp_01_Up').html('已赞');
-                     })
-                 })
-            </script>
+
             <div id="help"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-wenhao"></use></svg>
                 <div id="rp_Help_Up">
                     <h5>什么是攒人品？</h5>
@@ -233,11 +64,12 @@
                     <div id="visitTop">
                         <div id="visitTopLeft">{{0}}人</div>
                         <div id="visitTopRight">
-                            <div class="visitMore">
+                            <a href="{{url('home/comeToVisit')}}"><div class="visitMore">
                                 <svg class="icon" aria-hidden="true">
                                     <use xlink:href="#icon-dian"></use>
-                                </svg><div id="visit_more_Up">更多来访</div>
-                            </div>
+                                </svg>
+                                <div id="visit_more_Up">更多来访</div>
+                            </div></a>
                             {{--做隐藏--}}
                             <div class="visitCut">
                             <svg class="icon left" aria-hidden="true">
@@ -268,7 +100,7 @@
             {{--当一周内没有好友的生日显示下面--}}
             <div id="birthday">
                 <p class="birthMore">
-                    <a><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dian"></use></svg></a>
+                    <a href="{{url('/home/calendar')}}"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dian"></use></svg></a>
                 </p>
                 <div id="birth_more_Up">更多好友生日</div>
                 <div class="birthList"><span>最近一周没有好友过生日哦</span></div>
@@ -277,26 +109,7 @@
         </li>
     </ul>
 </div>
-{{--切换效果--}}
-<script>
-    var bodys=document.getElementById('bodys');
-    var options=document.getElementById('optiond').getElementsByTagName('li');
-    var card=document.getElementById('card').getElementsByTagName('li');
-    for(var i=0;i<options.length;i++){
-        (function(i){
-            options[i].onclick=function(){
-                for(var j=0;j < options.length;j++){
-                    options[j].className='';
-                }
-                options[i].className='active';
-                for(var j=0;j < card.length;j++){
-                    card[j].className='';
-                }
-                card[i].className='active';
-            }
-        })(i)
-    }
-</script>
+
 {{--------------------------------------------------------------------------------------------------------}}
 <div id="referee">
     <div id="refereeTop"><h5>推荐好友</h5>
@@ -350,6 +163,8 @@
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
+{{--引入Intergral.js--}}
+<script src="{{asset('home/js/Intergral.js')}}"></script>
 </body>
 </html>
 
