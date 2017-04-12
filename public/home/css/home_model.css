@@ -21,7 +21,7 @@ a:focus{ text-decoration:none;}
 
 /************ 主内容 *************/
 /************  写日志传照片  *************/
-#model_main{width:760px;margin:0 auto;margin-top:20px;}
+#model_main{width:760px;margin:0 auto;margin-top:20px;height:100%}
 #model_main_left{width:500px;float:left;margin-right:20px;}
 #indexlog_div{height: 124px;width:500px;box-shadow: 2px 2px 2px 0.5px #ccc;margin-bottom: 20px;background-color: #F8F8F8;}
 #indexlog_textarea{resize: none;border:none;width: 500px;padding:5px;height:80px;background-color: #FFFFFF;}

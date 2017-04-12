@@ -23,5 +23,6 @@ Route::post('/store','Home\UserController@store');//保存信息
 Route::get('/verify/{confirmed_code}','Home\UserController@emailConfirm');//验证邮箱
 Route::get('/logout', 'Home\UserController@logout');//登陆退出
 Route::get('model/homemodel','Home\IndexController@index');
+Route::get('home/photo','Home\IndexController@photo');
 
 
