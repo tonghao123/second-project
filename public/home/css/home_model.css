@@ -1,5 +1,9 @@
 *{ margin:0; padding:0; }
+<<<<<<< HEAD
 body{padding-top:100px;margin-left:150px;background-color: #E9EDF0;box-shadow: -5px 0 3px 1px #ccc; }
+=======
+body{padding-top:100px;margin-left:150px;background-color: #E9EDF0;box-shadow: -5px -5px 3px 1px #ccc; }
+>>>>>>> shen
 ul{text-decoration: none;list-style: none}
 #model_left{ background-color:#E6EAEE; position:fixed; top:50px; left:0; height:100%; width:150px;overflow: hidden;}
 #model_left{outline:1px solid #ccc}
@@ -12,7 +16,11 @@ a:hover{  text-decoration:none;}
 a:focus{ text-decoration:none;}
 
 /************ 第二行 ****************/
+<<<<<<< HEAD
 #change_infof{ position:fixed;  width:100%; height:50px; top:50px;left:150px; background-color:#F3F6F8;box-shadow: 0 2px 3px 0 #ccc;z-index: 750;}
+=======
+#change_infof{ position:fixed;  width:100%; height:50px; top:50px;left:150px; background-color:#F3F6F8;box-shadow: 0 2px 3px 0 #ccc;}
+>>>>>>> shen
 #change_info{ width:760px; margin:0 auto;}
 #change_info ul{ list-style: none; width:760px; height:50px;  line-height:50px; text-align:center;}
 #change_info ul li{ height:47px; margin:0 10px; float:left;}
@@ -21,7 +29,11 @@ a:focus{ text-decoration:none;}
 
 /************ 主内容 *************/
 /************  写日志传照片  *************/
+<<<<<<< HEAD
 #model_main{width:760px;margin:0 auto;margin-top:20px;}
+=======
+#model_main{width:760px;margin:0 auto;margin-top:20px;height:100%}
+>>>>>>> shen
 #model_main_left{width:500px;float:left;margin-right:20px;}
 #indexlog_div{height: 124px;width:500px;box-shadow: 2px 2px 2px 0.5px #ccc;margin-bottom: 20px;background-color: #F8F8F8;}
 #indexlog_textarea{resize: none;border:none;width: 500px;padding:5px;height:80px;background-color: #FFFFFF;}
@@ -57,11 +69,19 @@ a:focus{ text-decoration:none;}
 .index_friendscomment::before,.index_friendscomment::after{content: '';display: table;}
 .index_friendscomment{clear:both}
 /*** 多文本域 ***/
+<<<<<<< HEAD
 .index_friendstextarea{width: 415px !important;resize:none;margin-left:10px;float: left;margin-bottom:10px;overflow-y:hidden}
 /*** 提示多少字 ***/
 .index_friendshint{padding-left:15px;display: none;}
 /*** 按钮 ***/
 .index_friendssureinfo{float: right;margin-right:15px;margin-top:-5px;display:none !important;}
+=======
+.index_friendstextarea{resize:none;width:415px;margin-left:10px;float: left;margin-bottom:10px;overflow-y:hidden}
+/*** 提示多少字 ***/
+.index_friendshint{padding-left:15px;display: none;}
+/*** 按钮 ***/
+.index_friendssureinfo{float: right;margin-right:15px;margin-top:-5px;display:none;}
+>>>>>>> shen
 
 
 
