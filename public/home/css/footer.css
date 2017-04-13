@@ -5,7 +5,7 @@
     width:760px;
     margin:30px auto 0;
     background-color:transparent;
-    float: left;
+    float: right;
 }
 .ft-wrapper p{
     float:left;
@@ -21,7 +21,11 @@
 }
 .ft-wrapper span{
     text-align:right
-}.
+}
+.ft-wrapper .copyright-info {
+    float: right;
+    margin-right: 0;
+}
 
                                                                                                                                                                                                                                                                                                                                                 ft-wrapper a.l-2{line-height:normal}.ft-wrapper p a:hover{color:#227dc5}.ft-wrapper
                                                                                                                                                                                                                                                                                                                                                                                                                          {float:right;margin-right:0}

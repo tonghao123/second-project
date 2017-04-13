@@ -99,7 +99,7 @@
  </div>
 
   <div id="footer" style="width: 1349px;margin: 0 auto">
-      <div class="ft-wrapper clearfix" style="width: 1169px;">
+      <div class="ft-wrapper clearfix" style="width:980px;margin-right: 187px;">
           <p>
               <strong>玩转人人</strong>
               <a href="http://page.renren.com/register/regGuide/" target="_blank">公共主页</a>
@@ -137,7 +137,7 @@
           </p>
           <!--<p class="copyright-info">-->
           <!-- 临时添加公司信息用 -->
-          <p class="copyright-info" style="margin-left:165px">
+          <p class="copyright-info" >
               <span>公司全称：北京千橡网景科技发展有限公司</span>
               <span>公司电话：010-84481818</span>
               <span><a href="mailto:admin@renren-inc.com">公司邮箱：admin@renren-inc.com</a></span>
