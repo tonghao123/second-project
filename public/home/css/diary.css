@@ -1,0 +1,125 @@
+
+/*头*/
+.ugc-left-header {
+    width: 597px;
+    height: 49px;
+    background-color: #f8f8f8;
+    border: 1px solid #e1dfdf;
+    border-bottom-color: #DDD;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    margin: 15px auto 0px;
+}
+/*头左*/
+.ugc-header-left {
+    float: left;
+    height: 49px;
+    overflow: hidden;
+}
+/*头右*/
+.ugc-header-right {
+    float: right;
+    margin-top: 10px;
+    height: 31px;
+}
+
+.ugc-header-left a.headhover .ugc-header-span {
+    font-weight: bold;
+    line-height: 46px;
+    color: #333;
+}
+
+.ugc-header-left a.ugc-header-a .ugc-header-span {
+    float: left;
+    display: block;
+    padding: 0 4px;
+    height: 46px;
+    line-height: 44px;
+    color: #666;
+    overflow: hidden;
+    _zoom: 1;
+    cursor: pointer;
+}
+
+/*content*/
+.ugc-left-content {
+    width: 599px;
+    margin: 0 auto;
+}
+
+.ugc-left-list {
+    float: left;
+    width: 597px;
+    background-color: #FFF;
+    border: 1px solid #e1dfdf;
+    border-top: none;
+    border-bottom-color: #e5e5e5;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    box-shadow: 0 2px 1px -1px #d1d4d7;
+    overflow: hidden;
+}
+
+#blogList_wrap .ugc-item-info {
+    margin-left: 29px;
+    width: 540px;
+}
+
+.blogList-info-title {
+    height: auto;
+    overflow: hidden;
+    font-size: 20px;
+    line-height: 25px;
+    font-family: simsun;
+    color: #333;
+}
+
+.ugc-release-msgs {
+    float: left;
+    width: 445px;
+    height: 34px;
+    line-height: 34px;
+    font-size: 12px;
+    color: #aaa;
+    overflow: hidden;
+    _zoom: 1;
+}
+
+.ugc-item-abstract {
+    float: left;
+    width: 445px;
+    padding: 5px 0;
+    line-height: 24px;
+    color: #333;
+    overflow: hidden;
+}
+
+.ugc-item-info a {
+    text-decoration: none;
+    color: #333;
+}
+
+.blogList-focused-right {
+    float: right;
+    font-size: 12px;
+    display: none;
+}
+.ugc-item-info a {
+    text-decoration: none;
+    color: #333;
+}
+
+.ugc-item-info {
+    margin-left: 29px;
+    _margin-left: 15px;
+    width: 540px;
+}
+
+.ugc-list-item .ugc-item-info {
+    padding: 21px 0;
+    float: left;
+    border-bottom: 1px solid #e5e5e5;
+    overflow: hidden;
+    _zoom: 1;
+}
+

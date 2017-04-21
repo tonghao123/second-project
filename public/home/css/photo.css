@@ -1,0 +1,49 @@
+#change_infof ul{width:860px;}
+#change_info{width:860px;}
+/*****************************  我的相册 和 最近图片  *************************************/
+#photo_second{width:860px; height:auto; box-shadow: none;margin:0 auto;margin-top:20px;margin-bottom:20px; background-color: #fff; outline:1px solid #ccc}/*********  最外面的框 **********/
+#photo_ulf{width:860px;height:60px;background-color: #F8F8F8;}/*********  我的相册这个第一行的的框 **********/
+#photo_ul a{height:60px; float:left; weight:60px; padding:0 20px; line-height:60px; font-size:14px;color:black;}
+#photo_ul li{width:60px; height:57px;text-align:center}
+#photo_ul li:hover{font-weight:bold; border-bottom: 3px solid blue;}
+.photo_inright{float:right;line-height:60px;}
+
+/***************** 照片集 *******************/
+.photo_photos {width:850px; margin:20px 5px 10px 5px; padding:5px;}
+.photo_photo {width:270px; height:250px;  margin:5px; float:left }
+.photo_img{width:260px;height:195px; border:1px solid #ccc; border-radius: 5px; margin:0 auto;text-align:center;vertical-align:middle;line-height: 195px;}
+.photo_from{height:50px;width:260px;margin:0 5px;line-height:50px;}
+.photo_from a{float:left;color:black;}
+.photo_from a:hover{text-decoration: underline;color:#227DCF;}
+.photo_from span{float:right;}
+.photo_anniu{width:820px;height:40px; line-height:40px; margin:0 20px;  }
+.photo_anniu a{float: right}
+.photo_photos::before,.photo_photos::after{content:'';display:table;}
+.photo_photos::after{clear:both}
+.photo_second::before,.photo_second::after{content:'';display:table;}
+.photo_second::after{clear:both}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
