@@ -26,9 +26,11 @@ $(function(){
     })
 //最近来访
     $('.visitIcon').hover(function(){
-        $('#visit_01_Up').css('display','block');
+        $('#visit_01_Up').css('display','none');
+        $(this).children('#visit_01_Up').css('display','block');
     },function(){
         $('#visit_01_Up').css('display','none');
+        $(this).children('#visit_01_Up').css('display','none');
     })
     $('.visitCut .left').hover(function(){
         $('#visit_left_Up').css('display','block');
@@ -50,6 +52,13 @@ $(function(){
         $('#birth_more_Up').css('display','block');
     },function(){
         $('#birth_more_Up').css('display','none');
+    })
+    $('.birthIcon').hover(function(){
+        $('#birth_01_Up').css('display','none');
+        $(this).children('#birth_01_Up').css('display','block');
+    },function(){
+        $('#birth_01_Up').css('display','none');
+        $(this).children('#birth_01_Up').css('display','none');
     })
 //        推荐
     $('#refereeTop .more').hover(function(){

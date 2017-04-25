@@ -220,11 +220,11 @@
 
 	});
 	//点击小图标时，添加
-	$(".face ul li").click(function(){
-
+	$(".face ul li").click(function(e){
+        e.stopPropagation();   //阻止冒泡事件
 		var simg=$(this).find("img").clone();
 
-        $(this).parents().find(".index_friendstextarea").val($(".index_friendstextarea").val()+simg.attr('title'));
+        $(this).parent().parent().parent().parent().siblings(".index_friendstextarea").val($(".index_friendstextarea").val()+simg.attr('title'));
 
 	});
 </script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Home\Friend;
 use App\Model\Home\Comment;
 use App\Model\home\CommentLikes;
 use App\Model\Home\diary;
@@ -229,7 +230,7 @@ class IndexController extends Controller
             $eid=$result[0]->id_e;
             $jf=integradeDo::where('eid',$eid)->get()[0];
             $t=strtotime(date('Y/m/d',time()))-strtotime($jf->time_d);
-            if($t >= 86400) {
+            if(abs($t) >= 86400) {
                 $result[0]->rp_z += $result[0]->rp_d;
                 $result[0]->rp_d=0;
                 $result[0]->save();
@@ -238,7 +239,7 @@ class IndexController extends Controller
                 $jf->save();
             }
             $sub=strtotime(date('h:i:s',time())) - strtotime($jf->time_m);
-            if($sub > 1800)
+            if(abs($sub) > 1800)
             {
                 $jf->rp_f += 1;
                 $result[0]->rp_d += 1;
@@ -252,8 +253,24 @@ class IndexController extends Controller
         $rpf=$jf->rp_f;
         $untime=1800-$sub;
         $sub=date('i分:s秒',$untime);
+//        遍历可能认识的人
+//        学校 地址
+//        生日提醒
+        $friends=Friend::where('user1id',$uid)->where('status',3)->get()->toarray();
+        if(count($friends) > 0) {
+            foreach ($friends as $va) {
+                $fuid[] = $va['user2id'];
+            }
+
+            $userfriend = User::find($fuid)->toarray();
+            $str = implode("','", $fuid);
+            $ufriend = DB::select("select id,name,avatar,birthday from users where date_format(birthday,'%m%d') between date_format(curdate()-interval 7 day,'%m%d') and
+        date_format(curdate()+interval 7 day,'%m%d') and id in ('$str') limit 0,7 ");
+//        dd($ufriend);
+        }
 //-------------------------------------------------------------------------------------
-        return view('home.index',compact('friends','comment','icon','cont','faceImg','rpd','rpz','rpf','sub'));
+
+        return view('home.index',compact('friends','comment','icon','cont','faceImg','rpd','rpz','rpf','sub','friends','ufriend','uid'));
     }
     //登录
     public function login()

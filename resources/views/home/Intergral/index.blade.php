@@ -42,7 +42,7 @@
             <a><div class="rp_03"><p>刷新已得</p><span>{{$rpf or 0}}</span>RP
                     <div id="rp_032_Up">立即刷新页面即可获得1点RP</div>
                     <div id="rp_03_Up">每半小时刷新页面可获得1点RP，距离下<br>次还有
-                        {{$sub}}。
+                        {{$sub or '30分00秒'}}。
                     </div>
                 </div>
             </a>
@@ -97,7 +97,7 @@
                 </div>
                 {{--@endif--}}
         </li>
-        {{--好友生日提醒--}}
+        {{-----------------------------------------------------------------------------好友生日提醒------------------------------------------}}
         <li>
             {{--当一周内没有好友的生日显示下面--}}
             <div id="birthday">
@@ -105,12 +105,60 @@
                     <a href="{{url('/home/calendar')}}"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dian"></use></svg></a>
                 </p>
                 <div id="birth_more_Up">更多好友生日</div>
-                <div class="birthList"><span>最近一周没有好友过生日哦</span></div>
+                @if(!empty($friends))
+                    <div class="birthList">
+                        @forelse($ufriend as $bir)
+                            <div class="birthIcon">
+                                @if($bir->avatar != 'Home/img/default.jpg')
+                                <img src="{{url('img/home/'.$bir->avatar.'.jpg')}}" style="width: 32px;height: 32px;">
+                                @else
+                                    <img src="{{url($bir->avatar)}}" style="width: 32px;height: 32px;">
+                                    @endif
+                                <div id="birth_01_Up">{{$bir->name}}</div>
+                            </div>
+                            @empty
+                            <span>最近一周没有好友过生日哦</span>
+                        @endforelse
+                    </div>
+                    @endif
                 <img src="{{asset('home/img/birthday.png')}}">
             </div>
         </li>
     </ul>
 </div>
+{{--=============================祝福语========================================--}}
+<div id="zufu" style="display: none;position: fixed;height: auto; width: 422px; top: 226px; left: 383px;;box-shadow: 0 0 23px 0 rgba(22,5,7,.3);border-radius: 15px;border: 1px solid #d4d4d4;background: #f8f8f8;z-index: 1200;">
+    <div style="padding: 15px 20px;position: relative;z-index: 1000;">
+        <span id="ui-id-11" style="font-size: 18px;line-height: 25px;">生日祝福</span>
+        <button id="xa" style="position: absolute;right: 46px; top: 20px;width: 20px;padding: 0;height: 20px;line-height: 20px;border: none;overflow: hidden;z-index: 1;box-shadow: none;background: 0 0;font-size: 30px">×</button>
+    </div>
+    <form action="{{url('/home/gift')}}" method="post">
+        {{csrf_field()}}
+        <input type="hidden" name="uid" value="{{$uid}}">
+        <input type="hidden" name="gid" value="{{$bir->id}}">
+        <div style="padding: 0 30px;margin-bottom: 20px;">
+            <textarea name="gift" placeholder="请送上祝福！！！" style="display: block;width: 340px;height: 100px;border: 1px solid #ddd;border-bottom: none;padding: 10px;font-size: 14px;outline: 0;resize: none;"></textarea>
+        </div>
+        <div style="background: #fff;padding: 10px 20px;border-radius: 15px;">
+            <div style="text-align: right">
+                <input type="submit" value="发送" class="btn btn-info">
+            </div>
+        </div>
+    </form>
+</div>
+{{-----------------------------------------------------------------------}}
+<script>
+    $(function(){
+        $('#birthday').on('click','#birth_01_Up',function(){
+            $('#zufu').css('display','none');
+            $(this).parent().parent().parent().parent().parent().parent().siblings('#zufu').css('display','block');
+        })
+        $('#birthday').on('click','#xa',function(){
+            $('#zufu').css('display','none');
+            $(this).parent().parent('#zufu').css('display','none');
+        })
+    })
+</script>
 
 {{--------------------------------------------------------------------------------------------------------}}
 <div id="referee">

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{asset('public/css/bootstrap.css')}}"  rel="stylesheet">
     <link href="{{asset('admin/css/adminmodel.css')}}"  rel="stylesheet">
+    <link href="{{asset('home/css/information.css')}}"  rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
@@ -52,19 +53,37 @@
         <li class="amodel_fli">
             <span>前台管理</span>
             <ul>
-                <a href=""><li>角色管理</li></a>
-                <a href=""><li>权限管理</li></a>
-                <a href=""><li>管理员管理</li></a>
+                <a href="{{url('admin/index')}}"><li>用户管理</li></a>
+                <a href=""><li>日志管理</li></a>
+                <a href=""><li>相册管理</li></a>
+                <a href="{{url('/admin/comment-list')}}"><li>评论管理</li></a>
+                <a href="{{url('/admin/intergral-list')}}"><li>积分管理</li></a>
+                <a href="{{url('/admin/praise-list')}}"><li>点赞管理</li></a>
+                <a href="{{url('/admin/birth-list')}}"><li>生日管理</li></a>
             </ul>
         </li>
-        <li class="amodel_fli"><span>后台管理</span></li>
+        <li class="amodel_fli">
+            <span>后台管理</span>
+            <ul>
+                <a href=""><li>管理</li></a>
+                <li>
+                    <a href="{{url('admin/privilege')}}"><i class="icon-list-alt"></i> 权限管理</a>
+                </li>
+                <li>
+                    <a href="{{url('admin/role-list')}}"><i class="icon-list-alt"></i> 角色管理</a>
+                </li>
+                <li>
+                    <a href="{{url('admin/user-list')}}"><i class="icon-list-alt"></i>管理员管理</a>
+                </li>
+
+            </ul>
+        </li>
     </ul>
 
 </div>
-
 <!--------------------------  左边的结束  ---------------------->
 <!--------------------------  主体的开始  ---------------------->
-
+@section('amodel_main')
 <div class="amodel_main">
     <div class="amodel_mainfirst">
         <span> <span class="glyphicon glyphicon-home"></span><a href="">首页</a> &nbsp;>>&nbsp; <a href="">xx管理</a> &nbsp; </span>
@@ -97,7 +116,7 @@
         </table>
     </div>
 </div>
-
+@show()
 <!--------------------------  主体的结束  ---------------------->
 
 

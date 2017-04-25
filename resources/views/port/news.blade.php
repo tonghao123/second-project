@@ -33,29 +33,11 @@ $result = file_get_contents($url);
 //echo "返回的json数据:<br>\r\n";
 //print $result.'<br>\r\n';
 $results = json_decode($result);
+//dd($result);
 $new=$results->showapi_res_body->showapi_res_body;
 foreach($new->list as $v)
     {
         echo "<div id='a'><p>".$v->title."</p><p>".$v->day."</p><p>".$v->long."</p></div><hr>";
     }
 ?>
-        <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src='{{asset('/js/jquery-1.8.3.min.js')}}'></script>
-    <title>Document</title>
-</head>
-<body>
-{{--<script>--}}
-    {{--$(function(){--}}
-        {{--setInterval(function(){--}}
-            {{--$('div:last').prependTo('#box').css('opacity','0').fadeToggle(0).slideDown(1000).fadeTo(1000,1);--}}
-        {{--},3000)--}}
-    {{--})--}}
-{{--</script>--}}
-</body>
-</html>
+

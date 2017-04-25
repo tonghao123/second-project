@@ -58,11 +58,12 @@ a{cursor: pointer;}
 .birthMore{position:absolute;z-index: 100;}
 #birthday p{width: 240px;height: 10px;}
 #birthday p svg{float: right;margin-right:20px;color:#BDC8D4;font-size: 20px;margin-top: 6px;}
-#birthday .birthList{position: absolute;z-index: 100;margin-top:35px;margin-left:80px;font-size: 12px;}
+#birthday .birthList{overflow:hidden;height:36px;width:158px;position: absolute;z-index: 100;margin-top:30px;margin-left:80px;font-size: 12px;}
 #birthday .birthList span{color:#BDC8D4;}
+.birthIcon{width:32px;height:32px;background-image:url('../img/icon.gif');background-size: 100% 100%;margin:0px 8px 5px;float:left;position: relative;}
 /*弹框*/
 #birth_more_Up{opacity:0.9;display:none;height: 40px;width: 95px;background-color:#000;position: absolute;z-index: 800;color:#fff;text-align: center;font-size: 12px;line-height: 40px;margin-top:-39px;margin-left: 160px;}
-
+#birth_01_Up{top: -32px;opacity:0.5;display:none;height: 32px;width: 32px;background-color:#000;position: relative;z-index: 1000;color:#fff;text-align: center;font-size: 6px;line-height: 32px;margin: 0;}
 /*推荐好友*/
 #referee{background-color: #fff;width: 240px;height:232px;border:1px solid #ccc;border-top: 0px;overflow: hidden}
 #refereeTop{padding: 10px 15px 8px;width: 240px;height:35px;overflow: hidden;}

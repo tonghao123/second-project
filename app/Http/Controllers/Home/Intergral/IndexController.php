@@ -37,7 +37,7 @@ class IndexController extends Controller
             $eid=$result[0]->id_e;
             $jf=integradeDo::where('eid',$eid)->get()[0];
             $t=strtotime(date('Y/m/d',time()))-strtotime($jf->time_d);
-            if($t >= 86400) {
+            if(abs($t) >= 86400) {
                 $result[0]->rp_z += $result[0]->rp_d;
                 $result[0]->rp_d = rand(1, 6);
                 $result[0]->save();
@@ -46,7 +46,7 @@ class IndexController extends Controller
             }
 //            dd($result[0]->rp_d);
             $sub=strtotime(date('h:i:s',time())) - strtotime($jf->time_m);
-            if($sub > 1800)
+            if(abs($sub) > 1800)
             {
                 $jf->rp_f += 1;
                 $result[0]->rp_d += 1;
@@ -62,4 +62,5 @@ class IndexController extends Controller
         }
         return redirect('/home/index');
     }
+
 }
