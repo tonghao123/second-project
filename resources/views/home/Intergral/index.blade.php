@@ -35,13 +35,15 @@
     <ul id='card'>
         <li class='active'>
             {{--js计时3600秒切换还原图片zan01/zan--}}
-            <a><div class="rp_01"><span class="zan"><img src="{{asset('home/img/zan01.png')}}"></span><div class="zanTop"></div><div id="rp_01_Up">点击即可随机获取人品值</div></div></a>
+            <a href="{{url('home/intergral/timeD')}}"><div class="rp_01"><span class="zan"><img src="{{asset('home/img/zan01.png')}}"></span><div class="zanTop"></div><div id="rp_01_Up">点击即可随机获取人品值</div></div></a>
             {{--统计总rp 今日rp--}}
-            <a href="{{url('/home/character')}}"><div class="rp_02"><p id="pp">总RP值：<span>{{0}}</span></p><p id="pp">今日RP值：<span>{{0}}</span></p><div id="rp_02_Up">点击查看更多</div></div></a>
+            <a href="{{url('/home/character')}}"><div class="rp_02"><p id="pp">总RP值：<span>{{$rpz or 0}}</span></p><p id="pp">今日RP值：<span>{{$rpd or 0}}</span></p><div id="rp_02_Up">点击查看更多</div></div></a>
             {{--刷新的rp,rp值不能超过2位数--}}
-            <a><div class="rp_03"><p>刷新已得</p><span>{{0}}</span>RP
+            <a><div class="rp_03"><p>刷新已得</p><span>{{$rpf or 0}}</span>RP
                     <div id="rp_032_Up">立即刷新页面即可获得1点RP</div>
-                    <div id="rp_03_Up">每半小时刷新页面可获得1点RP，距离下<br>次还有<span id="box"></span>。</div>
+                    <div id="rp_03_Up">每半小时刷新页面可获得1点RP，距离下<br>次还有
+                        {{$sub}}。
+                    </div>
                 </div>
             </a>
 
@@ -111,53 +113,36 @@
 </div>
 
 {{--------------------------------------------------------------------------------------------------------}}
-<div id="referee">
-    <div id="refereeTop"><h5>推荐好友</h5>
-        <a><svg class="icon change" aria-hidden="true">
-            <use xlink:href="#icon-dian"></use>
-        </svg><div id="referee_more_Up">更多推荐</div>
-        </a>
-        <a><svg class="icon more" aria-hidden="true">
-            <use xlink:href="#icon-jiantouyou"></use>
-        </svg><div id="referee_Up">换一组</div>
-        </a>
-    </div>
+{{--<div id="referee">--}}
+    {{--<div id="refereeTop"><h5>推荐好友</h5>--}}
+        {{--<a><svg class="icon change" aria-hidden="true">--}}
+            {{--<use xlink:href="#icon-dian"></use>--}}
+        {{--</svg><div id="referee_more_Up">更多推荐</div>--}}
+        {{--</a>--}}
+        {{--<a><svg class="icon more" aria-hidden="true">--}}
+            {{--<use xlink:href="#icon-jiantouyou"></use>--}}
+        {{--</svg><div id="referee_Up">换一组</div>--}}
+        {{--</a>--}}
+    {{--</div>--}}
     {{--推荐好友，遍历--}}
-    <div id="refereeList">
-{{--        @forelse($friend as $fir)--}}
-            <div id="listFriend">
-                <b>{{'可能认识'}}</b>
-                <a><svg class="icon jian" aria-hidden="true">
-                        <use xlink:href="#icon-cha"></use>
-                    </svg><div id="friend_jian_Up">不再推荐</div>
-                </a>
-                <img src="{{ url('home/img/icon.gif')}}" width="68px" height="68px">
-                <div><p>{{'XXXXXX'}}</p>
-                    <span><svg class="icon jia" aria-hidden="true">
-                            <use xlink:href="#icon-jia"></use>
-                          </svg><div id="friend_jia_Up">关注好友</div>
-                    </span>
-                </div>
-            </div>
-            {{--......--}}
-            {{--@empty--}}
+    {{--<div id="refereeList">--}}
             {{--<div id="listFriend">--}}
                 {{--<b>{{'可能认识'}}</b>--}}
-                {{--<a><svg class="icon" aria-hidden="true">--}}
+                {{--<a><svg class="icon jian" aria-hidden="true">--}}
                         {{--<use xlink:href="#icon-cha"></use>--}}
-                    {{--</svg>--}}
+                    {{--</svg><div id="friend_jian_Up">不再推荐</div>--}}
                 {{--</a>--}}
-                {{--<img src="{{url('home/img/icon.gif')}}" width="68px" height="68px">--}}
-                {{--<div><p>{{ 'XXXXXX'}}</p>--}}
-                    {{--<span><svg class="icon" aria-hidden="true">--}}
+                {{--<img src="{{ url('home/img/icon.gif')}}" width="68px" height="68px">--}}
+                {{--<div><p>{{'XXXXXX'}}</p>--}}
+                    {{--<span><svg class="icon jia" aria-hidden="true">--}}
                             {{--<use xlink:href="#icon-jia"></use>--}}
-                          {{--</svg>--}}
+                          {{--</svg><div id="friend_jia_Up">关注好友</div>--}}
                     {{--</span>--}}
                 {{--</div>--}}
             {{--</div>--}}
-            {{--@endforelse--}}
-    </div>
-</div>
+            {{----}}
+    {{--</div>--}}
+{{--</div>--}}
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>

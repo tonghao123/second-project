@@ -12,7 +12,7 @@ class Comment extends Model
 //    public $timestamps = false;
     //调用create方法
     protected $fillable = ['id_c','uid','tid','tuid','content_c','utime_c'];
-     //设置黑名单
+    //设置黑名单
 //    protected $guarded = [''];
 //设置主键
     protected $primaryKey = 'id_c';

@@ -111,49 +111,49 @@ $(function(){
 });
 // ==========================================倒计时=====================================
 //    倒计时30分
-(function() {
-    var box = document.getElementById('box');
-    var rp03=document.getElementById('rp_03_Up');
-    var m = 30;
-    var s = 0;
-    var timeDate;
-    timeDate = setInterval(function () {
-        if (s == 0) {
-            m -= 1;
-            if (m >= 0) {
-                s = 59;
-            } else {
-                s = 0;
-            }
-        }
-        if (m <= 0) {
-            m = 0;
-        }
-        if (s < 0) {
-            clearInterval(timeDate);
-            rp03.style.display='none';
-            rp03.setAttribute('id','rp_032_Up');
-            return;
-        }
-        if(s < 10){
-            if(m < 10){
-                box.innerHTML ='0'+m + '分0' + s + '秒';
-                s--;
-            }else{
-                box.innerHTML = m + '分0' + s + '秒';
-                s--;
-            }
-        }else{
-            if(m <10){
-                box.innerHTML ='0'+m + '分' + s + '秒';
-                s--;
-            }else{
-                box.innerHTML = m + '分' + s + '秒';
-                s--;
-            }
-        }
-    },1000)
-})()
+// (function() {
+//     var box = document.getElementById('box');
+//     var rp03=document.getElementById('rp_03_Up');
+//     var m = 30;
+//     var s = 0;
+//     var timeDate;
+//     timeDate = setInterval(function () {
+//         if (s == 0) {
+//             m -= 1;
+//             if (m >= 0) {
+//                 s = 59;
+//             } else {
+//                 s = 0;
+//             }
+//         }
+//         if (m <= 0) {
+//             m = 0;
+//         }
+//         if (s < 0) {
+//             clearInterval(timeDate);
+//             rp03.style.display='none';
+//             rp03.setAttribute('id','rp_032_Up');
+//             return;
+//         }
+//         if(s < 10){
+//             if(m < 10){
+//                 box.innerHTML ='0'+m + '分0' + s + '秒';
+//                 s--;
+//             }else{
+//                 box.innerHTML = m + '分0' + s + '秒';
+//                 s--;
+//             }
+//         }else{
+//             if(m <10){
+//                 box.innerHTML ='0'+m + '分' + s + '秒';
+//                 s--;
+//             }else{
+//                 box.innerHTML = m + '分' + s + '秒';
+//                 s--;
+//             }
+//         }
+//     },1000)
+// })()
 //                把时间存在在数据库，每次刷新取得数据库的值并判断值m,s 都为零rp+1
 //                切换图片
 $(function(){

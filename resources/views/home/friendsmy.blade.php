@@ -7,12 +7,14 @@
 
 @section('main')
     @if(count($errors))
+        <div>
         <ul class="alert alert-danger" style="width:100%;text-align:center;height:50px;margin:0 auto;!important;">
             <ul>
                 @foreach($errors->all() as $error)
                     <li>{{$error}}</li>
                 @endforeach
             </ul>
+            </div>
             @endif
     <div class="friends_out">
         <div class="friends_first">

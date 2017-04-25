@@ -77,7 +77,7 @@ class UserController extends Controller
         //dd($request->all());
         Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')]);
 //        dd($flag);
-        return view('model.homemodel');
+        return redirect('home/index');
     }
 
     //用户注销
@@ -86,17 +86,17 @@ class UserController extends Controller
         Auth::logout();
         return redirect('home/login');
     }
-
-    public function sendSMS()
-    {
-        $sms=new SendTemplateSMS();
-        $result=$sms->sendSMS('15167667747',array('1F38644','1'),1);
-        dd($result);
-//        $result=new Result();
-//        $result->status=0;
-//        $result->message='短信验证成功';
-//        return $result->toJosn();
-//        return 'ss';
-    }
+//
+//    public function sendSMS()
+//    {
+//        $sms=new SendTemplateSMS();
+//        $result=$sms->sendSMS('15167667747',array('1F38644','1'),1);
+//        dd($result);
+////        $result=new Result();
+////        $result->status=0;
+////        $result->message='短信验证成功';
+////        return $result->toJosn();
+////        return 'ss';
+//    }
 
 }

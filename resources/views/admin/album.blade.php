@@ -8,8 +8,8 @@
     </div>
 
     @if(count($errors) > 0)
-        <div class="alert alert-danger" style="width:100%;text-align:center;margin:0 auto;!important;">
-            <ul style="list-style: none;">
+        <div class="alert alert-danger" style="width:100%;height:50px;padding:0;line-height:30px;text-align:center;margin:0 auto;!important;">
+            <ul style="list-style: none;height:20px;">
                 @foreach($errors->all() as $error)
                     <li>{{$error}}</li>
                 @endforeach
@@ -26,13 +26,14 @@
             <th>创建时间</th>
             <th>操作</th>
         </tr>
+        @if($album != [])
         @foreach($album as $a)
             <tr>
                 <td>{{$a['id']}}</td>
                 <td>{{$a['uid']}}</td>
                 <td>{{$a['pname']}}</td>
                 <td>{{$a['status']}}</td>
-                <td>{{$a['time']}}</td>
+                <td>{{date('Y-m-d H:i:s',$a['time'])}}</td>
                 <td>
                     <a href="{{asset('/admin/album/del/'.$a['id'])}}" class="btn btn-success">删除</a>
                     <a href="{{asset('/admin/album/up/'.$a['id'])}}" class="btn btn-success">修改</a>
@@ -40,8 +41,10 @@
                 </td>
         @endforeach
             </tr>
+       {{$album->links()}}
+        @endif
     </table>
-    {{$album->links()}}
+
     <style>
         table td,th{text-align: center;}
     </style>

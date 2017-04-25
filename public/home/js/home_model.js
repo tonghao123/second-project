@@ -113,6 +113,7 @@ $(function(){
         })
     }
     //点击评论的时候框变大,确认按钮出现
+    // ====================================评论=========================================
     $('.index_friendstextarea').click(function(){
         $(this).css({
             'height':'130px'
@@ -135,31 +136,127 @@ $(function(){
             'display':'inline-block'
         })
     });
-
-    $('.index_friendstextarea').blur(function(){
-        $('.index_friendstextarea').css({
-            'height':'30px'
-        });
-        $('.index_friendshint').css({
-            'display':'none'
-        });
-        $('.index_friendssureinfo').css({
-            'display':'none'
+//submit阻值冒泡
+//     $('.index_friendssureinfo').click(function(){
+//
+//     })
+    $('button').mouseover(function(){
+        $('.index_friendstextarea').blur(function (event) {
+            event.stopPropagation();
+            $(this).css({
+                'height': '130px'
+            });
+            $(this).next('.index_friendshint').css({
+                'display':'inline-block'
+            });
+            $(this).siblings('.index_friendssureinfo').css({
+                'display':'inline-block'
+            })
+            $(this).parent('.index_friendscomment').css({
+                'height':'180px'
+            })
         })
-    });
-    //触发不了按钮
-//            $("body").not($(".index_friendssureinf")).click(function(){
-//                alert(typeof($('.index_friendssureinf').click)==='function');//ture
-//                $('.index_friendstextarea').css({
-//                    'height':'30px'
-//                });
-//                $('.index_friendshint').css({
-//                    'display':'none'
-//                });
-//                $('.index_friendssureinfo').css({
-//                    'display':'none'
-//                })
-//            });
+    })
+
+    $('.bq').mouseover(function(){
+        $('.index_friendstextarea').blur(function () {
+            $(this).css({
+                'height': '130px'
+            });
+            $('.index_friendshint').css({
+                'display':'inline-block'
+            });
+            $('.index_friendssureinfo').css({
+                'display':'inline-block'
+            })
+        })
+    })
+    $('.bq').mouseout(function(){
+        $('.index_friendstextarea').blur(function () {
+            $(this).css({
+                'height': '30px'
+            });
+            $('.index_friendshint').css({
+                'display':'none'
+            });
+            $('.index_friendssureinfo').css({
+                'display':'none'
+            })
+        })
+    })
+    $('button').mouseout(function(){
+        $('.index_friendstextarea').blur(function () {
+            $(this).css({
+                'height': '30px'
+            });
+            $(this).next('.index_friendshint').css({
+                'display':'none'
+            });
+            $(this).siblings('.index_friendssureinfo').css({
+                'display':'none'
+            })
+            $(this).parent('.index_friendscomment').css({
+                'height':'auto'
+            })
+        })
+    })
+
+    $('.index_friendstextarea').blur(function () {
+           $('.index_friendstextarea').css({
+               'height': '30px'
+           });
+           $('.index_friendshint').css({
+               'display': 'none'
+           });
+           $('.index_friendssureinfo').css({
+               'display': 'none'
+           })
+    })
+
+    $('.limit_more a').click(function(event){
+        event.stopPropagation();
+        $(this).css({
+            "display":'none'
+        });
+        $('.limit').css({
+            'height':'auto'
+        })
+    })
+//回复
+    $('.friends_zan .receive').click(function(event){
+        event.stopPropagation();
+    })
+    //赞
+    $('.index_friendscomment_content .zan').click(function(event){
+        event.stopPropagation();
+    })
+    //删除
+    $('.friends_delete .delete').click(function(event){
+        event.stopPropagation();
+    })
+    //评论
+    $('.index_friendstextarea').click(function(event){
+        event.stopPropagation();
+    })
+    //表情
+    $('.bq').click(function(event){
+        event.stopPropagation();
+    })
+    $('.face').click(function(event){
+        event.stopPropagation();
+    })
+    //评论
+    $('.limit').click(function(event){
+        event.stopPropagation();
+    })
+
+    $(document).click(function(){
+        $(".limit").css({
+            'height':'124px'
+        });
+        $('.limit_more a').show();
+    })
+// --------------------------------------------------------------------------------
     //使第二行出现平均分布
     $('#change_infof').css({
         'width':$(window).width()-150+'px'

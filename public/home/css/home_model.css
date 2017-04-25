@@ -59,9 +59,27 @@ a:focus{ text-decoration:none;}
 /*** 点赞 ***/
 .index_friendssure{width:500px;height:60px;padding:15px;}
 /*** 评论 ***/
-.index_friendscomment{width:500px;height:auto; padding:10px 15px;background-color: #F8F8F8;border-top:1px solid #ccc}
+.index_comment{width: 500px;height: auto;border-top:1px solid #ccc}
+.index_friendscomment_list {width:500px; padding:10px 15px;background-color: #F8F8F8;float: left}
+.index_friendscomment{width:500px;height:auto; padding:10px 15px;background-color: #F8F8F8;}
 .index_friendscomment::before,.index_friendscomment::after{content: '';display: table;}
 .index_friendscomment{clear:both}
+.index_friendscomment_content{width: 430px;height: auto;float: left;overflow: hidden;}
+.index_friendscomment_list p{float: left;margin:0 10px;width: 410px;margin-top: 0px;word-break:break-word;}
+.index_friendscomment_list p::before,.index_friendscomment_list p::after{content: '';display: table;}
+.index_friendscomment_list p{clear:both}
+.index_friendscomment_list.active{background-color:#E1E9F0;}
+.index_friendscomment_content .friends_name a{font-weight: bold;color:#666;}
+.index_friendscomment_content .friends_name a.active{color:#227dc5;text-decoration: none;}
+.index_friendscomment_content .friends_time{color:#aaa;}
+.index_friendscomment_content span{margin-right: 5px;}
+.index_friendscomment_content .friends_delete{ margin-left: 10px;}
+.friends_zan,.friends_delete{display: none;float: right;}
+.index_friendscomment_content .friends_zan a,.index_friendscomment_content .friends_delete a{text-decoration:none;float: right;height: 18px;width: 40px;text-align: center;line-height: 18px;background-color: #cbdbea;color: #227dc5;border-radius: 10px;}
+.friends_zan a.active{background-color: #3879D9;color: #fff;}
+.friends_delete a.active{background-color: #3879D9;color: #fff;}
+.index_comment .limit{width: 500px;height: 124px;overflow: hidden;}
+.limit_more{background-color: #F8F8F8;text-align: center;}
 /*** 多文本域 ***/
 
 .index_friendstextarea{resize:none;width:415px;margin-left:10px;float: left;margin-bottom:10px;overflow-y:hidden}

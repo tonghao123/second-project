@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers\Home;
 
+
+use App\Model\Home\Aboutme;
+use App\Model\Home\Comment;
+use App\Model\home\CommentLikes;
+use App\Model\Home\integrade;
+use App\Model\Home\integradeDo;
 use App\Home\Album;
 use App\Home\Diary;
 use App\Home\Friend;
 use App\Home\Photo;
 use App\Model\Home\Information;
 use App\Model\Home\Lamp;
+use App\Model\Home\Report;
+use App\Model\Home\Word;
+use App\Tool\Result;
 use App\User;
+use App\Tool\SMS\SendTemplateSMS;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -16,12 +26,244 @@ use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
-
     //主页
     public function index()
     {
-        return view('home.index');
+        $uid=Auth::user()->id;
+        $icon=User::find($uid)->avatar;
+        $comment=DB::table('diarys')->join('users','diarys.uid','users.id')->where('uid',$uid)->get();
+        $con=DB::table('comments')->join('diarys','comments.tid','diarys.id')->join('users','comments.uid','users.id')->get();
+
+        $cont = $con->toArray();
+
+        foreach($cont as $k => $v){
+               $num =  count(CommentLikes::where('rid', $v->id_c)->get()->toArray());
+               $cont[$k]->num=$num;
+        }
+//       表情
+        $preg = array(
+              '/\[织\]/',
+              '/神马\]/',
+              '/\[浮云\]/',
+              '/\[给力\]/',
+              '/\[围观\]/',
+              '/\[威武\]/',
+              '/\[熊猫\]/',
+              '/兔子\]/',
+              '/\[奥特曼\]/',
+              '/\[囧\]/',
+              '/\[互粉\]/',
+              '/\[礼物\]/',
+              '/呵呵\]/',
+              '/嘻嘻\]/',
+              '/\[哈哈\]/',
+              '/\[可爱\]/',
+              '/\[可怜\]/',
+              '/\[挖鼻屎\]/',
+              '/\[吃惊\]/',
+              '/\[害羞\]/',
+              '/\[挤眼\]/',
+              '/\[闭嘴\]/',
+              '/\[鄙视\]/',
+              '/\[爱你\]/',
+              '/\[泪\]/',
+              '/\[偷笑\]/',
+              '/\[亲亲\]/',
+              '/\[生病\]/',
+              '/\[太开心\]/',
+              '/\[懒得理你\]/',
+              '/\[右哼哼\]/',
+              '/\[左哼哼\]/',
+              '/\[嘘\]/',
+              '/\[衰\]/',
+              '/\[委屈\]/',
+              '/\[吐\]/',
+              '/\[打哈气\]/',
+              '/\[抱抱\]/',
+              '/\[怒\]/',
+              '/\[疑问\]/',
+              '/\[馋嘴\]/',
+              '/\[拜拜\]/',
+              '/\[思考\]/',
+              '/\[汗\]/',
+              '/\[困\]/',
+              '/\[睡觉\]/',
+              '/\[钱\]/',
+              '/\[失望\]/',
+              '/\[酷\]/',
+              '/\[花心\]/',
+              '/\[哼\]/',
+              '/\[鼓掌\]/',
+              '/\[晕\]/',
+              '/\[悲伤\]/',
+              '/\[抓狂\]/',
+              '/\[黑线\]/',
+              '/\[阴险\]/',
+              '/\[怒骂\]/',
+              '/\[心\]/',
+              '/\[伤心\]/',
+              '/\[猪头\]/',
+              '/\[ok\]/',
+              '/\[耶\]/',
+              '/\[good\]/',
+              '/\[不要\]/',
+              '/\[赞\]/',
+              '/\[来\]/',
+              '/\[弱\]/',
+              '/\[蜡烛\]/',
+              '/\[钟\]/',
+              '/\[蛋糕\]/',
+              '/\[话筒\]/',
+              '/\[围脖\]/',
+              '/\[转发\]/',
+              '/\[路过这儿\]/',
+              '/\[bofu变脸\]/',
+              '/\[gbz困\]/',
+              '/\[生闷气\]/',
+              '/\[不要啊\]/',
+              '/\[dx泪奔\]/',
+              '/\[运气中\]/',
+              '/\[有钱\]/',
+              '/\[冲锋\]/',
+              '/\[照相机\]/'
+        );
+        $replace = array(
+                '<img src="/home/img/images/zz2_thumb.gif" >',
+                '<img src="/home/img/images/horse2_thumb.gif" >',
+                '<img src="/home/img/images/fuyun_thumb.gif" >',
+                '<img src="/home/img/images/geili_thumb.gif" >',
+                '<img src="/home/img/images/wg_thumb.gif" >',
+                '<img src="/home/img/images/vw_thumb.gif" >',
+                '<img src="/home/img/images/panda_thumb.gif" >',
+                '<img src="/home/img/images/rabbit_thumb.gif" >',
+                '<img src="/home/img/images/otm_thumb.gif" >',
+                '<img src="/home/img/images/j_thumb.gif" >',
+                '<img src="/home/img/images/hufen_thumb.gif" >',
+                '<img src="/home/img/images/liwu_thumb.gif" >',
+                '<img src="/home/img/images/smilea_thumb.gif" >',
+                '<img src="/home/img/images/tootha_thumb.gif" >',
+                '<img src="/home/img/images/laugh.gif" >',
+                '<img src="/home/img/images/tza_thumb.gif" >',
+                '<img src="/home/img/images/kl_thumb.gif" >',
+                '<img src="/home/img/images/kbsa_thumb.gif" >',
+                '<img src="/home/img/images/cj_thumb.gif" >',
+                '<img src="/home/img/images/shamea_thumb.gif" >',
+                '<img src="/home/img/images/zy_thumb.gif" >',
+                '<img src="/home/img/images/bz_thumb.gif" >',
+                '<img src="/home/img/images/bs2_thumb.gif" >',
+                '<img src="/home/img/images/lovea_thumb.gif" >',
+                '<img src="/home/img/images/sada_thumb.gif" >',
+                '<img src="/home/img/images/heia_thumb.gif" >',
+                '<img src="/home/img/images/qq_thumb.gif" >',
+                '<img src="/home/img/images/sb_thumb.gif" >',
+                '<img src="/home/img/images/mb_thumb.gif" >',
+                '<img src="/home/img/images/ldln_thumb.gif" >',
+                '<img src="/home/img/images/yhh_thumb.gif" >',
+                '<img src="/home/img/images/zhh_thumb.gif" >',
+                '<img src="/home/img/images/x_thumb.gif" >',
+                '<img src="/home/img/images/cry.gif" >',
+                '<img src="/home/img/images/wq_thumb.gif" >',
+                '<img src="/home/img/images/t_thumb.gif" >',
+                '<img src="/home/img/images/k_thumb.gif" >',
+                '<img src="/home/img/images/bba_thumb.gif" >',
+                '<img src="/home/img/images/angrya_thumb.gif" >',
+                '<img src="/home/img/images/yw_thumb.gif" >',
+                '<img src="/home/img/images/cza_thumb.gif" >',
+                '<img src="/home/img/images/88_thumb.gif" >',
+                '<img src="/home/img/images/sk_thumb.gif" >',
+                '<img src="/home/img/images/sweata_thumb.gif" >',
+                '<img src="/home/img/images/sleepya_thumb.gif" >',
+                '<img src="/home/img/images/sleepa_thumb.gif" >',
+                '<img src="/home/img/images/money_thumb.gif" >',
+                '<img src="/home/img/images/sw_thumb.gif" >',
+                '<img src="/home/img/images/cool_thumb.gif" >',
+                '<img src="/home/img/images/hsa_thumb.gif" >',
+                '<img src="/home/img/images/hatea_thumb.gif" >',
+                '<img src="/home/img/images/gza_thumb.gif" >',
+                '<img src="/home/img/images/dizzya_thumb.gif" >',
+                '<img src="/home/img/images/bs_thumb.gif" >',
+                '<img src="/home/img/images/crazya_thumb.gif" >',
+                '<img src="/home/img/images/h_thumb.gif" >',
+                '<img src="/home/img/images/yx_thumb.gif" >',
+                '<img src="/home/img/images/nm_thumb.gif" >',
+                '<img src="/home/img/images/hearta_thumb.gif" >',
+                '<img src="/home/img/images/unheart.gif" >',
+                '<img src="/home/img/images/pig.gif" >',
+                '<img src="/home/img/images/ok_thumb.gif" >',
+                '<img src="/home/img/images/ye_thumb.gif" >',
+                '<img src="/home/img/images/good_thumb.gif" >',
+                '<img src="/home/img/images/no_thumb.gif" >',
+                '<img src="/home/img/images/z2_thumb.gif" >',
+                '<img src="/home/img/images/come_thumb.gif" >',
+                '<img src="/home/img/images/sad_thumb.gif" >',
+                '<img src="/home/img/images/lazu_thumb.gif" >',
+                '<img src="/home/img/images/clock_thumb.gif" >',
+                '<img src="/home/img/images/cake.gif" >',
+                '<img src="/home/img/images/m_thumb.gif" >',
+                '<img src="/home/img/images/weijin_thumb.gif" >',
+                '<img src="/home/img/images/lxhzhuanfa_thumb.gif" >',
+                '<img src="/home/img/images/lxhluguo_thumb.gif" >',
+                '<img src="/home/img/images/bofubianlian_thumb.gif" >',
+                '<img src="/home/img/images/gbzkun_thumb.gif" >',
+                '<img src="/home/img/images/boboshengmenqi_thumb.gif" >',
+                '<img src="/home/img/images/chn_buyaoya_thumb.gif" >',
+                '<img src="/home/img/images/daxiongleibenxiong_thumb.gif" >',
+                '<img src="/home/img/images/cat_yunqizhong_thumb.gif" >',
+                '<img src="/home/img/images/youqian_thumb.gif" >',
+                '<img src="/home/img/images/cf_thumb.gif" >',
+                '<img src="/home/img/images/camera_thumb.gif" >'
+        );
+        foreach ($cont as $k => $v) {
+           $v->content_c = preg_replace($preg, $replace, $v->content_c);
+        }
+
+//        根据用户的id查找出好友的id 用 orwhere 查出好友的comment遍历出来；
+//======================================================================================
+//        积分判断
+//        $uid=Auth::user()->id;
+        $result=integrade::where('uid',$uid)->get();
+        if(count($result) == 0){
+            $data=array(
+                'uid'=>$uid,
+            );
+            $eid=DB::table('integrade')->insertGetId($data);
+            $jf=integradeDo::create([
+                'eid'=>$eid,
+                'time_d'=>date('Y/m/d',time()),
+                'time_m'=>date('h:i:s',time()),
+            ]);
+        }else{
+            $eid=$result[0]->id_e;
+            $jf=integradeDo::where('eid',$eid)->get()[0];
+            $t=strtotime(date('Y/m/d',time()))-strtotime($jf->time_d);
+            if($t >= 86400) {
+                $result[0]->rp_z += $result[0]->rp_d;
+                $result[0]->rp_d=0;
+                $result[0]->save();
+                $jf->time_d=date('Y/m/d',time());
+                $jf->rp_f=0;
+                $jf->save();
+            }
+            $sub=strtotime(date('h:i:s',time())) - strtotime($jf->time_m);
+            if($sub > 1800)
+            {
+                $jf->rp_f += 1;
+                $result[0]->rp_d += 1;
+                $result[0]->save();
+                $jf->time_m=date('h:i:s',time());
+                $jf->save();
+            }
+        }
+        $rpd=$result[0]->rp_d;
+        $rpz=$result[0]->rp_z;
+        $rpf=$jf->rp_f;
+        $untime=1800-$sub;
+        $sub=date('i分:s秒',$untime);
+//-------------------------------------------------------------------------------------
+        // dd($comment);
+        return view('home.index',compact('friends','comment','icon','cont','faceImg','rpd','rpz','rpf','sub'));
     }
+    
     //登录
     public function login()
     {
@@ -32,8 +274,12 @@ class IndexController extends Controller
     {
         $id=Auth::user()->id;
         $arr=Album::all()->where('uid',$id)->toArray();
+        if($arr==[]){
+            return view('home/photo')->with('arr',[]);
+        }
         $arr=array_merge($arr);
         $spaths=Album::where('uid',$id)->pluck('id')->toArray();
+        $s=[];
         $count=count($spaths);
         foreach ($spaths as $k=> $spath){
             $spathes=Photo::select('pho_name','savepath')->where('aid',$spath)->limit(1)->get()->toArray();
@@ -77,25 +323,26 @@ class IndexController extends Controller
         $cstate=$request->input('cstate');//1公开2不公开
         $photoname='';
         if($title=="" || $content==""){
-            return view('/home/writediary')->withErrors('题目或者内容不能为空');
+            return redirect('/home/writediary')->withErrors('题目或者内容不能为空');
         }
         $a=1;
         //如果有图片就保存
         if($request->pic){
+            if(count($request->all()['pic'])>9 ){
+                return back()->withErrors('最多9张jpg图片');
+            }
+
             foreach($request->file('pic') as $file) {
-                $lastname = substr($_FILES['pic']['name'][0], strrpos($_FILES['pic']['name'][0], '.'), 5);
-                $file->move('img/'.$url, $a .$lastname);
+                if($a>9){
+                    break;
+                }
+                $file->move('img/'.$url, $a .'.jpg');
                 $a++;
             }
         }
-//        if($request->pic){
-//            $lastname=substr ($_FILES['pic']['name'],strrpos ($_FILES['pic']['name'],'.'),5 );
-//            $photoname=str_random(11).$lastname;
-//            $request->pic->move('img',$photoname);
-//        }
-//        dd(($request->file('pic')));
+
         if(DB::table('diarys')->where('uid',$id)->where('title',$title)->where('content',$content)->first()){
-            return view('/home/writediary')->withErrors('你应经发表过这篇日志了');
+            return redirect('/home/writediary')->withErrors('你应经发表过这篇日志了');
         }
         $arr=array(
             'uid'=>$id,
@@ -104,14 +351,14 @@ class IndexController extends Controller
             'likenum'=>0,
             'cstate'=>0,
             'utime'=>$utime,
-            'photoname'=>$photoname,
+            'photoname'=>$a-1,
             'cstate'=>$cstate,
             'remember_token'=>$token
         );
         if(DB::table('diarys')->insert($arr)){
-            return view('/home/writediary')->withErrors('发表成功');
+            return redirect('/home/writediary')->withErrors('发表成功');
         }else{
-            return view('/home/writediary')->withErrors('发表失败');
+            return redirect('/home/writediary')->withErrors('发表失败');
         }
 
     }
@@ -120,37 +367,16 @@ class IndexController extends Controller
     public function center(){
         return view('home.myself');
     }
-
+    //创建相册
     public function doalbum(Request $request)
     {
         $aa=$request->all();
         $name=$aa['pname'];
         $uid=$aa['uid'];
-        //yiyiyi
-        $id=Auth::user()->id;
-        $arr=Album::all()->where('uid',$id)->toArray();
-        $arr=array_merge($arr);
-        $spaths=Album::where('uid',$id)->pluck('id')->toArray();
-        $count=count($spaths);
-        foreach ($spaths as $k=> $spath){
-            $spathes=Photo::select('pho_name','savepath')->where('aid',$spath)->limit(1)->get()->toArray();
-            if(count($spathes)){
-                $spathe[]=$spathes[0];
-            }else{
-                $spathes=array(
-                    "pho_name" => "default_icon.png",
-                    "savepath" => "home/img"
-                );
-                $spathe[]=$spathes;
-            }
-        }
-        for($i=0;$i<$count;$i++){
-            $s[$i]=array_merge($arr[$i],$spathe[$i]);
-        }
-        //yiyiyi
+
         //判断有没有原来的数据 有的话就返回原来的网页
         if(count(Album::all()->where('pname',$name)->where('uid',$uid)) || $name==null){
-            return view('home.photo')->with('arr',$s);
+            return back()->withErrors('此相册已经创建过');
         }
 
         $bb=array_shift($aa);
@@ -158,42 +384,26 @@ class IndexController extends Controller
             'time'=>time(),
         );
         $aa=array_merge($aa,$time);
-        Album::insert($aa);
-
-        //ererer
-        $id=Auth::user()->id;
-        $arr=Album::all()->where('uid',$id)->toArray();
-        $arr=array_merge($arr);
-        $spaths=Album::where('uid',$id)->pluck('id')->toArray();
-        $count=count($spaths);
-        foreach ($spaths as $k=> $spath){
-            $spathes=Photo::select('pho_name','savepath')->where('aid',$spath)->limit(1)->get()->toArray();
-            if(count($spathes)){
-                $spathe[]=$spathes[0];
-            }else{
-                $spathes=array(
-                    "pho_name" => "default_icon.png",
-                    "savepath" => "home/img"
-                );
-                $spathe[]=$spathes;
-            }
+        $r=Album::insert($aa);
+        if($r){
+            return back()->withErrors('创建成功');
+        }else{
+            return back()->withErrors('创建失败');
         }
-        for($i=0;$i<$count;$i++){
-            $s[$i]=array_merge($arr[$i],$spathe[$i]);
-        }
-        //ererere
-        $s[$count-1]["pho_name"]="default_icon.png";
-        $s[$count-1]["savepath"]="home/img";
 
-//        dd($s);
-        return view('home.photo')->with('arr',$s);
     }
-
+    //更新图片
     public function upphoto(Request $request)
     {
-//        dd($request->all());
         $array=$request->all();
+//        dd($array);
+        if(count($array)<3){
+            return back()->withErrors('请先创建相册或者上传图片');
+        }
+
         $aid=$array['myphoto'];
+//        $check=Album::where('id',$aid)
+//        dd()
         $time=time();
         $a=array(
             'aid'=>$aid,
@@ -203,20 +413,27 @@ class IndexController extends Controller
         $arr=Album::all()->where('uid',$id)->toArray();
         //循环遍历图片路径
         $spath=Album::where('uid',$id)->pluck('id')->toArray();
+        if($spath==[]){
+            return back()->withErrors('此相册不存在');
+        }
         foreach ($spath as $spa){
             $spaths[]=Photo::where('aid',$spa)->first();
-
         }
-//        dd($arr->toArray());
         $arr=array_merge($arr,$spaths);
         if( ! $request->pic){
-            return view('home/photo')->with('arr',$arr);
+            return redirect('home/photo')->withErrors('请上传图片');
         }
         $aass=Album::find($aid);
         $uid=$aass['uid'];
         $pname=$aass['pname'];
         //存放路径 img/xxx_Xxx
         $str=$uid.'_'.$pname;
+        foreach($request->file('pic') as $file) {
+            $lastname = substr($_FILES['pic']['name'][0], strrpos($_FILES['pic']['name'][0], '.'), 5);
+            if($lastname!='.jpg'){
+                return back()->withErrors('请选择jpg的图片上传');
+            }
+        }
         foreach($request->file('pic') as $file) {
             $lastname = substr($_FILES['pic']['name'][0], strrpos($_FILES['pic']['name'][0], '.'), 5);
             $e=str_random(10);
@@ -227,60 +444,20 @@ class IndexController extends Controller
             Photo::insert($ae);
             $a++;
         }
-        //yiyiyi查出数据 并合并 最后返回页面
-        $id=Auth::user()->id;
-        $arr=Album::all()->where('uid',$id)->toArray();
-        $arr=array_merge($arr);
-        $spaths=Album::where('uid',$id)->pluck('id')->toArray();
-        $count=count($spaths);
-        foreach ($spaths as $k=> $spath){
-            $spathes=Photo::select('pho_name','savepath')->where('aid',$spath)->limit(1)->get()->toArray();
-            if(count($spathes)){
-                $spathe[]=$spathes[0];
-            }else{
-                $spathes=array(
-                    "pho_name" => "default_icon.png",
-                    "savepath" => "home/img"
-                );
-                $spathe[]=$spathes;
-            }
-        }
-        for($i=0;$i<$count;$i++){
-            $s[$i]=array_merge($arr[$i],$spathe[$i]);
-        }
-        //yiyiyi
-        return view('/home/photo')->with('arr',$s);
+        return redirect('/home/photo')->withErrors('上传成功');
     }
+    //删除相册
     public function delpho($id)
     {
-       //yiyiyi
         $uid=Auth::user()->id;
-        $arr=Album::all()->where('uid',$uid)->toArray();
-        $arr=array_merge($arr);
-        $spaths=Album::where('uid',$uid)->pluck('id')->toArray();
-        $count=count($spaths);
-        foreach ($spaths as $k=> $spath){
-            $spathes=Photo::select('pho_name','savepath')->where('aid',$spath)->limit(1)->get()->toArray();
-            if(count($spathes)){
-                $spathe[]=$spathes[0];
-            }else{
-                $spathes=array(
-                    "pho_name" => "default_icon.png",
-                    "savepath" => "home/img"
-                );
-                $spathe[]=$spathes;
-            }
-        }
-        for($i=0;$i<$count;$i++){
-            $s[$i]=array_merge($arr[$i],$spathe[$i]);
-        }
-       //yiyiyi
-
         if(! $id){
-            return view('/home/photo')->with('arr',$s);
+            return back()->withErrors('相册ID不存在');
         }
         //相册名
         $pname=Album::select('pname')->where('id',$id)->get();
+        if($pname->toArray() ==[]){
+            return back()->withErrors('相册不存在');
+        }
         $result=Photo::where('aid',$id)->get()->toArray();
         if($result){
             foreach ($result as $r) {
@@ -293,63 +470,53 @@ class IndexController extends Controller
         if (file_exists('img/'.$uid.'_'.$pname)){
             rmdir('img/'.$uid.'_'.$pname);
         }
-
         //删除相册中的数据
-        Album::where('id',$id)->delete();
-        //删除图片中的数据
-        Photo::where('aid',$id)->delete();
-        //yiyiyi
-        $uid=Auth::user()->id;
-        $arr=Album::all()->where('uid',$uid)->toArray();
-        $arr=array_merge($arr);
-        $spaths=Album::where('uid',$uid)->pluck('id')->toArray();
-        $count=count($spaths);
-        foreach ($spaths as $k=> $spath){
-            $spathes=Photo::select('pho_name','savepath')->where('aid',$spath)->limit(1)->get()->toArray();
-            if(count($spathes)){
-                $spathe[]=$spathes[0];
-            }else{
-                $spathes=array(
-                    "pho_name" => "default_icon.png",
-                    "savepath" => "home/img"
-                );
-                $spathe[]=$spathes;
-            }
+        $r1=Album::where('id',$id)->delete();
+        //删除图片中的数据 没有值就默认成功
+        $r2=1;
+        $countphoto=count(Photo::where('aid',$id)->get()->toArray());
+        if($countphoto!=0){
+            $r2=Photo::where('aid',$id)->delete();
         }
-        $s=array();
-        for($i=0;$i<$count;$i++){
-            $s[$i]=array_merge($arr[$i],$spathe[$i]);
+        if($r1 && $r2){
+            return back()->withErrors('删除成功');
+        }else{
+            return back()->withErrors('删除失败,稍后再试');
         }
-        //yiyiyi
-        return view('/home/photo')->with('arr',$s);
-    }
 
+    }
+    //图片页
     public function photos($id)
     {
         $aid=$id;
         $result=Photo::select()->where('aid',$aid)->get();
-        return view('home/photos')->with('arr',$result);
+        if($result->toArray() !=[]){
+            return view('home/photos')->with('arr',$result)->with('aid',$id);
+        }else{
+            return view('home/photos')->with('arr',[])->with('aid',$id);
+        }
+
     }
+    //删除图片
     public function delphos($id)
     {
         $result=Photo::where('id',$id)->first();
+        if($result==null){
+            return back()->withErrors('此图片已被删除');
+        }
         if($result){
             if(file_exists($result['savepath'].'/'.$result['pho_name'])){
                 unlink($result['savepath'].'/'.$result['pho_name']);
             }
         }
         Photo::where('id',$id)->delete();
-        return back();
+        return back()->withErrors('删除成功');
     }
     //更新日志页
     public function updatediary($id)
     {
-//        dd($id);
         if(! $id){
-            $uid=Auth::user()->id;
-            $result=Diary::all()->where('uid',$uid)->toArray();
-            return view('/home/diary')->with('arr',$result)->withErrors('id值不能为空');
-//            return back()->withErrors('id值不能为空');
+            return back()->withErrors('id值不能为空');
         }
         $result=Diary::where('id',$id)->get()->toArray();
         $result=$result[0];
@@ -382,15 +549,15 @@ class IndexController extends Controller
 
         if(Diary::where('id',$id)->update($result)){
             $uid=Auth::user()->id;
-            $result=Diary::all()->where('uid',$uid)->toArray();
-            return view('/home/diary')->with('arr',$result)->withErrors('修改成功');
+//            $result=Diary::all()->where('uid',$uid)->toArray();
+            return back()->withErrors('修改成功');
         }else{
-            $result=Diary::where('id',$id)->get()->toArray();
-            $result=$result[0];
+//            $result=Diary::where('id',$id)->get()->toArray();
+//            $result=$result[0];
             if(empty($result)){
                 return back()->withErrors('此文章可能不存在,请稍后再修改');
             }
-            return view('/home/updatediary')->with('arr',$result)->withErrors('修改失败,请稍后再试');
+            return back()->withErrors('修改失败,请稍后再试');
         }
 
     }
@@ -402,9 +569,7 @@ class IndexController extends Controller
         $time=$time[0]['utime'];
 
         if(! $id){
-            $uid=Auth::user()->id;
-            $result=Diary::all()->where('uid',$uid)->toArray();
-            return view('/home/diary')->with('arr',$result)->withErrors('id值不能为空');
+            return back()->withErrors('id值不能为空');
         }
         if(Diary::where('id',$id)->delete()){
             $uid=Auth::user()->id;
@@ -424,9 +589,203 @@ class IndexController extends Controller
             closedir($fh);
             rmdir($path);
 
+            return back()->withErrors('删除成功');
+        }else{
+            return back()->withErrors('删除失败');
+        }
 
-            $result=Diary::all()->where('uid',$uid)->toArray();
-            return view('/home/diary')->with('arr',$result)->withErrors('删除成功');
+    }
+
+//-------------------------------------------------------------------------留言
+    //留言
+    public function words()
+    {
+        $uid=Auth::user()->id;
+        $arr=Word::where('user2id',$uid)->where('status','1')->orderBy('time','desc')->paginate(10);
+        $aw=Word::where('user2id',$uid)->where('status','1')->orderBy('time','desc')->get()->toArray();
+        if($aw==[]){
+            return view('home.words')->with('arr',$aw);
+        }
+        //循环遍历出名字
+        foreach ($arr as $k=>$v){
+            $r=User::select('name')->where('id',$v['user1id'])->get()->toArray();
+            if($r==[]){
+                $arr[$k]['user1id']='无此用户';
+                continue;
+            }
+            $arr[$k]['user1id']=$r[0]['name'];
+        }
+        return view('home.words')->with('arr',$arr);
+    }
+    //自己删除留言,对自己不可见
+    public function wordsmydel($id){
+        $r=Word::where('id',$id)->where('status',1)->get()->toArray();
+        if($r==[]){
+            return back()->withErrors('此留言不存在');
+        }
+        $result=Word::find($id);
+        $result->status=2;
+        $check=$result->save();
+        if($check){
+            return back()->withErrors('删除成功');
+        }else{
+            return back()->withErrors('删除失败');
+        }
+    }
+    //查看我给好友的留言
+    public function wordstofriends(){
+//        dd(3);
+        $uid=Auth::user()->id;
+        $arr=Word::where('user1id',$uid)->where('status','1')->orderBy('time','desc')->paginate(10);
+        $aw=Word::where('user1id',$uid)->where('status','1')->orderBy('time','desc')->get()->toArray();
+        if($aw==[]){
+            return view('home.wordstofriends')->with('arr',$aw);
+        }
+        //循环遍历出名字
+        foreach ($arr as $k=>$v){
+            $r=User::select('name')->where('id',$v['user2id'])->get()->toArray();
+            if($r==[]){
+                $arr[$k]['user2id']='无此用户';
+                continue;
+            }
+            $arr[$k]['user2id']=$r[0]['name'];
+        }
+        return view('home.wordstofriends')->with('arr',$arr);
+    }
+    //删除自己给别人的留言
+    public function wordsdel($id)
+    {
+        $r=Word::where('id',$id)->get()->toArray();
+        if($r==[]){
+            return back()->withErrors('此留言不存在');
+        }
+        $result=Word::find($id)->delete();
+        if($result){
+            return back()->withErrors('删除成功');
+        }else{
+            return back()->withErrors('删除失败');
+        }
+    }
+    //给别人留言页面
+    public function wtf(){
+        $id=Auth::user()->id;
+        $result=Friend::select('user1id','user2id')->where('status',3)->where('user1id',$id)->orwhere('user2id',$id)->where('status',3)->get()->toArray();
+//        $arr=Friend::select('user1id','user2id')->where('status',3)->where('user1id',$id)->orwhere('user2id',$id)->where('status',3)->paginate(1);
+        $userinfo=[];
+        //把查出来的数据id去查用户信息 储存在一个数组中 然后传到friends
+        foreach($result as $r){
+            if($r['user1id'] != $id ){
+                $userinfo[]=User::where('id',$r['user1id'])->get()->toArray()[0];
+            }
+            if($r['user2id'] != $id ){
+                $userinfo[]=User::where('id',$r['user2id'])->get()->toArray()[0];
+            }
+        }
+        return view('/home/wordswtf')->with('arr',$userinfo);
+    }
+    //处理留言
+    public function wordsdo(Request $request,$id)
+    {
+//        dd($request->all());
+        $r=User::where('id',$id)->get()->toArray();
+        if($r==[]){
+            return back()->withErrors('此好友不存在');
+        }
+        $uid=Auth::user()->id;
+        //判断是否有好友关系
+        $r1=Friend::where('user1id',$id)->where('user2id',$uid)->where('status',3)->get()->toArray();
+        $r2=Friend::where('user2id',$id)->where('user1id',$uid)->where('status',3)->get()->toArray();
+        if( ($r1 ==[]) && ($r2 == [])){
+            return back()->withErrors('你们不是好友关系');
+        }
+        $arr=$request->all();
+        if(count($arr)<2){
+            return back()->withErrors('请输入留言内容');
+        }
+        if($arr['content']==''){
+            return back()->withErrors('请输入留言内容');
+        }
+        $content=$arr['content'];
+        $a=array(
+            'user1id'=>$uid,
+            'user2id'=>$id,
+            'content'=>$content,
+            'time'=>time()
+        );
+        $r=Word::insert($a);
+        if($r){
+            return back()->withErrors('留言成功');
+        }else{
+            return back()->withErrors('留言失败');
+        }
+//        dd($arr);
+
+    }
+//---------------------------------------------------------------关于我们
+    public function aboutme()
+    {
+        $r=Aboutme::all()->toArray();
+
+        return view('home/aboutme')->with('arr',$r);
+    }
+//---------------------------------------------------------------举报管理
+    public function report(Request $request){
+
+        if($request->all()){
+//            dd($request->all());
+            //用户ID
+            $uid=Auth::user()->id;
+            //用户验证码
+            $code=$request->input('code');
+            if(strtolower($code) != strtolower(session('code'))) {
+                return back()->withErrors('验证码错误');
+            }
+            $request->session()->forget('code');
+            $u1name=$request->input('u1name');
+            $u1phone=$request->input('u1phone');
+            $u2name=$request->input('username');
+            $u2info=$request->input('userinfo');
+            if(!($u1name && $u1phone && $u2name && $u2info)){
+                return back()->withErrors('必须全填');
+            }
+            $a=array(
+                'u1name'=>$u1name,
+                'u2name'=>$u2name,
+                'u1phone'=>$u1phone,
+                'u2info'=>$u2info
+            );
+            $r=Report::insert($a);
+            if($r){
+                return back()->withErrors('举报成功');
+            }else{
+                return back()->withErrors('举报失败');
+            }
+
+            }else{
+                return view('home.report');
+            }
+    }
+    //------------------------------------------------举报发送短信
+    public function sendcode(Request $request)
+    {
+        //用户ID
+        $uid=Auth::user()->id;
+        //字符串验证码
+        $str=str_random(4);
+        //接收过来的电话号码
+        $phone=$request->input('u1phone');
+        if(! preg_match("/^1[34578]{1}\d{9}$/",$phone)){
+            return "请输入正确的手机号码";
+        }
+        session(['code'=>$str]);
+        $str=strtolower($str);
+
+        $sms=new SendTemplateSMS();
+        $result=$sms->sendSMS($phone,array($str,5),1);
+        if($result->status!=0){
+            return '发送失败';
+        }else{
+            return '发送成功';
         }
 
     }
@@ -724,6 +1083,17 @@ class IndexController extends Controller
         }else{
             return back();
         }
+    }
+
+    //天气
+    public function date()
+    {
+        return view('/port/weather');
+    }
+    //新闻
+    public function news()
+    {
+        return view('/port/news');
     }
 
 

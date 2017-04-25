@@ -20,8 +20,8 @@
                 <div><img src="{{asset('home/img/rp01.jpg')}}"></div>
                 <div class="myRP">
                     <div class="myrpValue"><p>我的人品值</p></div>
-                    <div class="sumRP">总RP值：<span>&nbsp; 99</span></div>
-                    <div class="todayRP">今日攒人品获取：<span>&nbsp;10</span> &nbsp;&nbsp;刷新获取：<span>&nbsp;5</span></div>
+                    <div class="sumRP">总RP值：<span>&nbsp; {{$rpz}}</span></div>
+                    <div class="todayRP">今日攒人品获取：<span>&nbsp;{{$rpd}}</span> &nbsp;&nbsp;刷新获取：<span>&nbsp;{{$rpf}}</span></div>
                     <a href="" target="_blank"><div class="submitRP">RP兑换中心</div></a>
                 </div>
             </div>
@@ -105,11 +105,12 @@
                 </div>
             </div>
         {{--遍历好友的rp排行--}}
+        {{--数组拿k值 排名--}}
         <div id="rp_right">
             <h4>今日好友RP排行</h4>
-            <ul><span>我的排名<a>&nbsp;1</a></span></ul>
+            <ul><span>我的排名<a>&nbsp;{{0}}</a></span></ul>
 
-            <li><div class="rankLabel rankTop">1</div>
+            <li><div class="rankLabel rankTop">{{0}}</div>
                 <a target="_blank" href="http://www.renren.com/925805295">
                     <img src="{{url('/home/img/cc.jpg')}}">
                 </a>
